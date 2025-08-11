@@ -1,0 +1,53 @@
+lugin
+2025-08-11 17:40:24,060 - PIL.Image - DEBUG - Importing PalmImagePlugin
+2025-08-11 17:40:24,060 - PIL.Image - DEBUG - Importing PcdImagePlugin
+2025-08-11 17:40:24,060 - PIL.Image - DEBUG - Importing PcxImagePlugin
+2025-08-11 17:40:24,060 - PIL.Image - DEBUG - Importing PdfImagePlugin
+2025-08-11 17:40:24,066 - PIL.Image - DEBUG - Importing PixarImagePlugin
+2025-08-11 17:40:24,067 - PIL.Image - DEBUG - Importing PngImagePlugin
+2025-08-11 17:40:24,067 - PIL.Image - DEBUG - Importing PpmImagePlugin
+2025-08-11 17:40:24,067 - PIL.Image - DEBUG - Importing PsdImagePlugin
+2025-08-11 17:40:24,067 - PIL.Image - DEBUG - Importing QoiImagePlugin
+2025-08-11 17:40:24,068 - PIL.Image - DEBUG - Importing SgiImagePlugin
+2025-08-11 17:40:24,068 - PIL.Image - DEBUG - Importing SpiderImagePlugin
+2025-08-11 17:40:24,068 - PIL.Image - DEBUG - Importing SunImagePlugin
+2025-08-11 17:40:24,068 - PIL.Image - DEBUG - Importing TgaImagePlugin
+2025-08-11 17:40:24,069 - PIL.Image - DEBUG - Importing TiffImagePlugin
+2025-08-11 17:40:24,069 - PIL.Image - DEBUG - Importing WebPImagePlugin
+2025-08-11 17:40:24,070 - PIL.Image - DEBUG - Importing WmfImagePlugin
+2025-08-11 17:40:24,070 - PIL.Image - DEBUG - Importing XbmImagePlugin
+2025-08-11 17:40:24,071 - PIL.Image - DEBUG - Importing XpmImagePlugin
+2025-08-11 17:40:24,072 - PIL.Image - DEBUG - Importing XVThumbImagePlugin
+2025-08-11 17:40:38,355 - plugins.youtube_dl_button - INFO - ['yt-dlp', '-c', '--max-filesize', '2097152000', '--embed-subs', '-f', '243+bestaudio', '--hls-prefer-ffmpeg', '--merge-output-format', 'webm', 'https://youtu.be/TXq-FYU5iSs?si=tgWHkYr2vhspeSij', '-o', './DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_243.webm', '--no-warnings']
+2025-08-11 17:40:47,068 - plugins.youtube_dl_button - INFO - 
+2025-08-11 17:40:47,068 - plugins.youtube_dl_button - INFO - [youtube] Extracting URL: https://youtu.be/TXq-FYU5iSs?si=tgWHkYr2vhspeSij
+[youtube] TXq-FYU5iSs: Downloading webpage
+[youtube] TXq-FYU5iSs: Downloading tv client config
+[youtube] TXq-FYU5iSs: Downloading tv player API JSON
+[youtube] TXq-FYU5iSs: Downloading ios player API JSON
+[youtube] TXq-FYU5iSs: Downloading m3u8 information
+[info] TXq-FYU5iSs: Downloading 1 format(s): 243+251
+[info] There are no subtitles for the requested languages
+[download] Destination: ./DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_243.f243.webm
+[download] 100% of  127.53MiB in 00:00:02 at 53.66MiB/s    
+[download] Destination: ./DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_243.f251.webm
+[download] 100% of   77.93MiB in 00:00:01 at 66.53MiB/s    
+[EmbedSubtitle] There aren't any subtitles to embed
+2025-08-11 17:40:47,069 - pyrogram.dispatcher - ERROR - [Errno 2] No such file or directory: './DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_243.mkv'
+Traceback (most recent call last):
+  File "/home/runner/workspace/plugins/youtube_dl_button.py", line 186, in youtube_dl_call_back
+    file_size = os.stat(download_directory).st_size
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_243.webm'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/home/runner/workspace/plugins/cb_buttons.py", line 124, in button
+    await youtube_dl_call_back(bot, update)
+  File "/home/runner/workspace/plugins/youtube_dl_button.py", line 190, in youtube_dl_call_back
+    file_size = os.stat(download_directory).st_size
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_243.mkv'
