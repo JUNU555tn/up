@@ -185,8 +185,52 @@ async def youtube_dl_call_back(bot, update):
         try:
             file_size = os.stat(download_directory).st_size
         except FileNotFoundError as exc:
-            download_directory = os.path.splitext(download_directory)[0] + "." + "mkv"
-            # https://stackoverflow.com/a/678242/4723940
+            # Check for separate video and audio files that need merging
+            base_name = os.path.splitext(download_directory)[0]
+            video_file = None
+            audio_file = None
+            
+            # Look for separate video and audio files
+            for file in os.listdir(tmp_directory_for_each_user):
+                if file.startswith(os.path.basename(base_name)) and ".f" in file:
+                    if "f243" in file or "f242" in file or "f244" in file:
+                        video_file = os.path.join(tmp_directory_for_each_user, file)
+                    elif "f251" in file or "f140" in file:
+                        audio_file = os.path.join(tmp_directory_for_each_user, file)
+            
+            # If we found separate files, merge them using ffmpeg
+            if video_file and audio_file and os.path.exists(video_file) and os.path.exists(audio_file):
+                merged_file = base_name + ".webm"
+                merge_command = [
+                    "ffmpeg", "-i", video_file, "-i", audio_file,
+                    "-c", "copy", merged_file, "-y"
+                ]
+                logger.info(f"Merging files: {merge_command}")
+                merge_process = await asyncio.create_subprocess_exec(
+                    *merge_command,
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE,
+                )
+                stdout, stderr = await merge_process.communicate()
+                
+                if os.path.exists(merged_file):
+                    download_directory = merged_file
+                    # Clean up separate files
+                    try:
+                        os.remove(video_file)
+                        os.remove(audio_file)
+                    except:
+                        pass
+                else:
+                    # If merging failed, use the video file as fallback
+                    download_directory = video_file
+            elif video_file and os.path.exists(video_file):
+                # Use video file if no audio file found
+                download_directory = video_file
+            else:
+                # Last resort: try .mkv extension
+                download_directory = os.path.splitext(download_directory)[0] + "." + "mkv"
+            
             file_size = os.stat(download_directory).st_size
         if file_size > Config.TG_MAX_FILE_SIZE:
             await bot.edit_message_text(
