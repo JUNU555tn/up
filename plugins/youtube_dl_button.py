@@ -29,6 +29,7 @@ import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from pyrogram import enums
+from pyrogram.enums import ParseMode
 from pyrogram.types import InputMediaPhoto
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
 from hachoir.metadata import extractMetadata
@@ -185,51 +186,66 @@ async def youtube_dl_call_back(bot, update):
         try:
             file_size = os.stat(download_directory).st_size
         except FileNotFoundError as exc:
-            # Check for separate video and audio files that need merging
             base_name = os.path.splitext(download_directory)[0]
-            video_file = None
-            audio_file = None
+            found_file = False
             
-            # Look for separate video and audio files
-            for file in os.listdir(tmp_directory_for_each_user):
-                if file.startswith(os.path.basename(base_name)) and ".f" in file:
-                    if "f243" in file or "f242" in file or "f244" in file:
-                        video_file = os.path.join(tmp_directory_for_each_user, file)
-                    elif "f251" in file or "f140" in file:
-                        audio_file = os.path.join(tmp_directory_for_each_user, file)
+            # First try multiple formats that yt-dlp might create
+            for ext in ("webm", "mkv", "mp4", "avi", "flv"):
+                alt_path = f"{base_name}.{ext}"
+                if os.path.exists(alt_path):
+                    download_directory = alt_path
+                    found_file = True
+                    break
             
-            # If we found separate files, merge them using ffmpeg
-            if video_file and audio_file and os.path.exists(video_file) and os.path.exists(audio_file):
-                merged_file = base_name + ".webm"
-                merge_command = [
-                    "ffmpeg", "-i", video_file, "-i", audio_file,
-                    "-c", "copy", merged_file, "-y"
-                ]
-                logger.info(f"Merging files: {merge_command}")
-                merge_process = await asyncio.create_subprocess_exec(
-                    *merge_command,
-                    stdout=asyncio.subprocess.PIPE,
-                    stderr=asyncio.subprocess.PIPE,
-                )
-                stdout, stderr = await merge_process.communicate()
+            # If no merged file found, check for separate video and audio files that need merging
+            if not found_file:
+                video_file = None
+                audio_file = None
                 
-                if os.path.exists(merged_file):
-                    download_directory = merged_file
-                    # Clean up separate files
-                    try:
-                        os.remove(video_file)
-                        os.remove(audio_file)
-                    except:
-                        pass
-                else:
-                    # If merging failed, use the video file as fallback
+                # Look for separate video and audio files
+                for file in os.listdir(tmp_directory_for_each_user):
+                    if file.startswith(os.path.basename(base_name)) and ".f" in file:
+                        if any(format_id in file for format_id in ["f278", "f243", "f242", "f244", "f137", "f136"]):
+                            video_file = os.path.join(tmp_directory_for_each_user, file)
+                        elif any(format_id in file for format_id in ["f251", "f140", "f139", "f250"]):
+                            audio_file = os.path.join(tmp_directory_for_each_user, file)
+                
+                # If we found separate files, merge them using ffmpeg
+                if video_file and audio_file and os.path.exists(video_file) and os.path.exists(audio_file):
+                    merged_file = base_name + ".webm"
+                    merge_command = [
+                        "ffmpeg", "-i", video_file, "-i", audio_file,
+                        "-c", "copy", merged_file, "-y"
+                    ]
+                    logger.info(f"Merging files: {merge_command}")
+                    merge_process = await asyncio.create_subprocess_exec(
+                        *merge_command,
+                        stdout=asyncio.subprocess.PIPE,
+                        stderr=asyncio.subprocess.PIPE,
+                    )
+                    stdout, stderr = await merge_process.communicate()
+                    
+                    if os.path.exists(merged_file):
+                        download_directory = merged_file
+                        found_file = True
+                        # Clean up separate files
+                        try:
+                            os.remove(video_file)
+                            os.remove(audio_file)
+                        except:
+                            pass
+                    else:
+                        logger.warning(f"Merging failed: {stderr.decode()}")
+                        # If merging failed, use the video file as fallback
+                        download_directory = video_file
+                        found_file = True
+                elif video_file and os.path.exists(video_file):
+                    # Use video file if no audio file found
                     download_directory = video_file
-            elif video_file and os.path.exists(video_file):
-                # Use video file if no audio file found
-                download_directory = video_file
-            else:
-                # Last resort: try .mkv extension
-                download_directory = os.path.splitext(download_directory)[0] + "." + "mkv"
+                    found_file = True
+            
+            if not found_file:
+                raise FileNotFoundError(f"No downloaded file found for {base_name}")
             
             file_size = os.stat(download_directory).st_size
         if file_size > Config.TG_MAX_FILE_SIZE:
@@ -299,7 +315,7 @@ async def youtube_dl_call_back(bot, update):
                     chat_id=update.message.chat.id,
                     audio=download_directory,
                     caption=description,
-                    parse_mode=enums.ParseMode.HTML,
+                    parse_mode=ParseMode.HTML,
                     duration=duration,
                     # performer=response_json["uploader"],
                     # title=response_json["title"],
@@ -319,7 +335,7 @@ async def youtube_dl_call_back(bot, update):
                     document=download_directory,
                     thumb=thumb_image_path,
                     caption=description,
-                    parse_mode=enums.ParseMode.HTML,
+                    parse_mode=ParseMode.HTML,
                     # reply_markup=reply_markup,
                     reply_to_message_id=update.message.reply_to_message.id,
                     progress=progress_for_pyrogram,
@@ -349,7 +365,7 @@ async def youtube_dl_call_back(bot, update):
                     chat_id=update.message.chat.id,
                     video=download_directory,
                     caption=description,
-                    parse_mode=enums.ParseMode.HTML,
+                    parse_mode=ParseMode.HTML,
                     duration=duration,
                     width=width,
                     height=height,

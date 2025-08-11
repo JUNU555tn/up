@@ -21,6 +21,7 @@ from translation import Translation
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from helper_funcs.display_progress import humanbytes
+from pyrogram.enums import ParseMode
 from helper_funcs.help_uploadbot import DownLoadFile
 from helper_funcs.display_progress import progress_for_pyrogram
 from hachoir.metadata import extractMetadata
@@ -203,7 +204,7 @@ async def echo(bot: Client, update: Message):
                 chat_id=update.chat.id,
                 text=Translation.NO_VOID_FORMAT_FOUND.format(str(error_message)),
                 reply_to_message_id=update.id,
-                parse_mode=enums.ParseMode.HTML,
+                parse_mode=ParseMode.HTML,
                 disable_web_page_preview=True
             )
             return False
@@ -346,7 +347,7 @@ async def echo(bot: Client, update: Message):
                 chat_id=update.chat.id,
                 text=Translation.FORMAT_SELECTION.format(thumbnail) + "\n" + Translation.SET_CUSTOM_USERNAME_PASSWORD,
                 reply_markup=reply_markup,
-                parse_mode=enums.ParseMode.HTML,
+                parse_mode=ParseMode.HTML,
                 reply_to_message_id=update.id
             )
         else:
@@ -371,6 +372,6 @@ async def echo(bot: Client, update: Message):
                 chat_id=update.chat.id,
                 text=Translation.FORMAT_SELECTION.format(""),
                 reply_markup=reply_markup,
-                parse_mode=enums.ParseMode.HTML,
+                parse_mode=ParseMode.HTML,
                 reply_to_message_id=update.id
             )
