@@ -1,0 +1,115 @@
+2025-08-11 17:26:26,619 - pyrogram.crypto.aes - INFO - Using TgCrypto
+2025-08-11 17:26:26,752 - asyncio - DEBUG - Using selector: EpollSelector
+2025-08-11 17:26:48,440 - plugins.youtube_dl_echo - INFO - {
+    "_": "User",
+    "id": 6415368038,
+    "is_self": false,
+    "is_contact": false,
+    "is_mutual_contact": false,
+    "is_deleted": false,
+    "is_bot": false,
+    "is_verified": false,
+    "is_restricted": false,
+    "is_scam": false,
+    "is_fake": false,
+    "is_support": false,
+    "is_premium": false,
+    "first_name": "Jack",
+    "last_name": "Sparrow 🔥",
+    "status": "UserStatus.RECENTLY",
+    "username": "Pawsismyson",
+    "language_code": "en"
+}
+2025-08-11 17:26:48,440 - filelock - DEBUG - Attempting to acquire lock 140587238932352 on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-11 17:26:48,440 - filelock - DEBUG - Lock 140587238932352 acquired on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-11 17:26:48,442 - filelock - DEBUG - Attempting to release lock 140587238932352 on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-11 17:26:48,442 - filelock - DEBUG - Lock 140587238932352 released on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-11 17:26:54,299 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): i.ytimg.com:443
+2025-08-11 17:26:54,804 - urllib3.connectionpool - DEBUG - https://i.ytimg.com:443 "GET /vi_webp/TXq-FYU5iSs/maxresdefault.webp HTTP/1.1" 200 154326
+2025-08-11 17:26:54,982 - PIL.Image - DEBUG - Importing AvifImagePlugin
+2025-08-11 17:26:54,983 - PIL.Image - DEBUG - Importing BlpImagePlugin
+2025-08-11 17:26:54,984 - PIL.Image - DEBUG - Importing BmpImagePlugin
+2025-08-11 17:26:54,984 - PIL.Image - DEBUG - Importing BufrStubImagePlugin
+2025-08-11 17:26:54,984 - PIL.Image - DEBUG - Importing CurImagePlugin
+2025-08-11 17:26:54,984 - PIL.Image - DEBUG - Importing DcxImagePlugin
+2025-08-11 17:26:54,985 - PIL.Image - DEBUG - Importing DdsImagePlugin
+2025-08-11 17:26:54,989 - PIL.Image - DEBUG - Importing EpsImagePlugin
+2025-08-11 17:26:54,991 - PIL.Image - DEBUG - Importing FitsImagePlugin
+2025-08-11 17:26:54,992 - PIL.Image - DEBUG - Importing FliImagePlugin
+2025-08-11 17:26:54,992 - PIL.Image - DEBUG - Importing FpxImagePlugin
+2025-08-11 17:26:54,994 - PIL.Image - DEBUG - Importing FtexImagePlugin
+2025-08-11 17:26:54,994 - PIL.Image - DEBUG - Importing GbrImagePlugin
+2025-08-11 17:26:54,995 - PIL.Image - DEBUG - Importing GifImagePlugin
+2025-08-11 17:26:54,995 - PIL.Image - DEBUG - Importing GribStubImagePlugin
+2025-08-11 17:26:54,995 - PIL.Image - DEBUG - Importing Hdf5StubImagePlugin
+2025-08-11 17:26:54,995 - PIL.Image - DEBUG - Importing IcnsImagePlugin
+2025-08-11 17:26:54,997 - PIL.Image - DEBUG - Importing IcoImagePlugin
+2025-08-11 17:26:54,998 - PIL.Image - DEBUG - Importing ImImagePlugin
+2025-08-11 17:26:54,998 - PIL.Image - DEBUG - Importing ImtImagePlugin
+2025-08-11 17:26:54,999 - PIL.Image - DEBUG - Importing IptcImagePlugin
+2025-08-11 17:26:54,999 - PIL.Image - DEBUG - Importing JpegImagePlugin
+2025-08-11 17:26:54,999 - PIL.Image - DEBUG - Importing Jpeg2KImagePlugin
+2025-08-11 17:26:54,999 - PIL.Image - DEBUG - Importing McIdasImagePlugin
+2025-08-11 17:26:54,999 - PIL.Image - DEBUG - Importing MicImagePlugin
+2025-08-11 17:26:55,005 - PIL.Image - DEBUG - Importing MpegImagePlugin
+2025-08-11 17:26:55,006 - PIL.Image - DEBUG - Importing MpoImagePlugin
+2025-08-11 17:26:55,006 - PIL.Image - DEBUG - Importing MspImagePlugin
+2025-08-11 17:26:55,006 - PIL.Image - DEBUG - Importing PalmImagePlugin
+2025-08-11 17:26:55,007 - PIL.Image - DEBUG - Importing PcdImagePlugin
+2025-08-11 17:26:55,007 - PIL.Image - DEBUG - Importing PcxImagePlugin
+2025-08-11 17:26:55,007 - PIL.Image - DEBUG - Importing PdfImagePlugin
+2025-08-11 17:26:55,013 - PIL.Image - DEBUG - Importing PixarImagePlugin
+2025-08-11 17:26:55,013 - PIL.Image - DEBUG - Importing PngImagePlugin
+2025-08-11 17:26:55,013 - PIL.Image - DEBUG - Importing PpmImagePlugin
+2025-08-11 17:26:55,013 - PIL.Image - DEBUG - Importing PsdImagePlugin
+2025-08-11 17:26:55,013 - PIL.Image - DEBUG - Importing QoiImagePlugin
+2025-08-11 17:26:55,014 - PIL.Image - DEBUG - Importing SgiImagePlugin
+2025-08-11 17:26:55,014 - PIL.Image - DEBUG - Importing SpiderImagePlugin
+2025-08-11 17:26:55,014 - PIL.Image - DEBUG - Importing SunImagePlugin
+2025-08-11 17:26:55,015 - PIL.Image - DEBUG - Importing TgaImagePlugin
+2025-08-11 17:26:55,015 - PIL.Image - DEBUG - Importing TiffImagePlugin
+2025-08-11 17:26:55,015 - PIL.Image - DEBUG - Importing WebPImagePlugin
+2025-08-11 17:26:55,016 - PIL.Image - DEBUG - Importing WmfImagePlugin
+2025-08-11 17:26:55,016 - PIL.Image - DEBUG - Importing XbmImagePlugin
+2025-08-11 17:26:55,017 - PIL.Image - DEBUG - Importing XpmImagePlugin
+2025-08-11 17:26:55,018 - PIL.Image - DEBUG - Importing XVThumbImagePlugin
+2025-08-11 17:27:00,464 - pyrogram.dispatcher - ERROR - 'Message' object has no attribute 'message_id'
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/home/runner/workspace/plugins/cb_buttons.py", line 124, in button
+    await youtube_dl_call_back(bot, update)
+  File "/home/runner/workspace/plugins/youtube_dl_button.py", line 103, in youtube_dl_call_back
+    message_id=update.message.message_id
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Message' object has no attribute 'message_id'
+2025-08-11 17:27:13,865 - pyrogram.dispatcher - ERROR - 'Message' object has no attribute 'message_id'
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/home/runner/workspace/plugins/cb_buttons.py", line 124, in button
+    await youtube_dl_call_back(bot, update)
+  File "/home/runner/workspace/plugins/youtube_dl_button.py", line 103, in youtube_dl_call_back
+    message_id=update.message.message_id
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Message' object has no attribute 'message_id'
+2025-08-11 17:27:42,853 - plugins.youtube_dl_echo - INFO - {
+    "_": "User",
+    "id": 6415368038,
+    "is_self": false,
+    "is_contact": false,
+    "is_mutual_contact": false,
+    "is_deleted": false,
+    "is_bot": false,
+    "is_verified": false,
+    "is_restricted": false,
+    "is_scam": false,
+    "is_fake": false,
+    "is_support": false,
+    "is_premium": false,
+    "first_name": "Jack",
+    "last_name": "Sparrow 🔥",
+    "status": "UserStatus.RECENTLY",
+    "username": "Pawsismyson",
+    "language_code": "en"
+}
