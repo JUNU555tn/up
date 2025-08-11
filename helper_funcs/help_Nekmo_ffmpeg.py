@@ -81,20 +81,25 @@ async def take_screen_shot(video_file, output_directory, ttl):
         out_put_file_name
     ]
     # width = "90"
-    process = await asyncio.create_subprocess_exec(
-        *file_genertor_command,
-        # stdout must a pipe to be accessible as process.stdout
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
-    )
-    # Wait for the subprocess to finish
-    stdout, stderr = await process.communicate()
-    e_response = stderr.decode().strip()
-    t_response = stdout.decode().strip()
-    if os.path.lexists(out_put_file_name):
-        return out_put_file_name
-    else:
+    try:
+        process = await asyncio.create_subprocess_exec(
+            *file_genertor_command,
+            # stdout must a pipe to be accessible as process.stdout
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+        # Wait for the subprocess to finish
+        stdout, stderr = await process.communicate()
+        e_response = stderr.decode().strip()
+        t_response = stdout.decode().strip()
+        if os.path.lexists(out_put_file_name):
+            return out_put_file_name
+        else:
+            return None
+    except FileNotFoundError:
+        logger.warning("ffmpeg not found, skipping screenshot generation")
         return None
+
 
 # https://github.com/Nekmo/telegram-upload/blob/master/telegram_upload/video.py#L26
 
@@ -154,7 +159,8 @@ async def generate_screen_shots(
             current_ttl = current_ttl + ttl_step
             if is_watermarkable:
                 ss_img = await place_water_mark(ss_img, output_directory + "/" + str(time.time()) + ".jpg", wf)
-            images.append(ss_img)
+            if ss_img is not None:
+                images.append(ss_img)
         return images
     else:
         return None
