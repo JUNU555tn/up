@@ -7,7 +7,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
-import lk21, urllib.parse, filetype, shutil, time, tldextract, asyncio, json, math, os, requests
+import urllib.parse, filetype, shutil, time, tldextract, asyncio, json, math, os, requests
 from PIL import Image
 # the secret configuration specific things
 if bool(os.environ.get("WEBHOOK", False)):
@@ -37,7 +37,7 @@ async def echo(bot: Client, update: Message):
         youtube_dl_username = None
         youtube_dl_password = None
         file_name = None
-        folder = f'./lk21/{update.from_user.id}/'
+        folder = f'./DOWNLOADS/{update.from_user.id}/'
         bypass = ['zippyshare', 'hxfile', 'mediafire', 'anonfiles', 'antfiles']
         ext = tldextract.extract(url)
         if ext.domain in bypass:
