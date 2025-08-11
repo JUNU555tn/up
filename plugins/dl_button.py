@@ -74,7 +74,7 @@ async def ddl_call_back(bot, update):
                 l = entity.length
                 youtube_dl_url = youtube_dl_url[o:o + l]
     user = await bot.get_me()
-    mention = user["mention"]
+    mention = f"@{user.username}" if user.username else user.first_name
     description = Translation.CUSTOM_CAPTION_UL_FILE.format(mention)
     start = datetime.now()
     await bot.edit_message_text(
@@ -168,7 +168,7 @@ async def ddl_call_back(bot, update):
             # try to upload file
             if tg_send_type == "audio":
                 user = await bot.get_me()
-                mention = user["mention"]
+                mention = f"@{user.username}" if user.username else user.first_name
                 audio = await bot.send_audio(
                     chat_id=update.message.chat.id,
                     audio=download_directory,
@@ -189,7 +189,7 @@ async def ddl_call_back(bot, update):
                 await audio.forward(Config.LOG_CHANNEL)
             elif tg_send_type == "file":
                 user = await bot.get_me()
-                mention = user["mention"]
+                mention = f"@{user.username}" if user.username else user.first_name
                 document = await bot.send_document(
                     chat_id=update.message.chat.id,
                     document=download_directory,
@@ -207,7 +207,7 @@ async def ddl_call_back(bot, update):
                 await document.forward(Config.LOG_CHANNEL)
             elif tg_send_type == "vm":
                 user = await bot.get_me()
-                mention = user["mention"]
+                mention = f"@{user.username}" if user.username else user.first_name
                 video_note = await bot.send_video_note(
                     chat_id=update.message.chat.id,
                     video_note=download_directory,
@@ -226,7 +226,7 @@ async def ddl_call_back(bot, update):
                 await vm.reply_text(f"Submitted by {update.from_user.mention}\nUploaded by {mention}")
             elif tg_send_type == "video":
                 user = await bot.get_me()
-                mention = user["mention"]
+                mention = f"@{user.username}" if user.username else user.first_name
                 video = await bot.send_video(
                     chat_id=update.message.chat.id,
                     video=download_directory,
