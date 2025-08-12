@@ -235,10 +235,10 @@ async def echo(bot: Client, update: Message):
                     if "audio only" in format_string or formats.get("vcodec") == "none":
                         continue
 
-                    # Get quality info
-                    height = formats.get("height", 0)
-                    width = formats.get("width", 0)
-                    fps = formats.get("fps", 0)
+                    # Get quality info with None check
+                    height = formats.get("height") or 0
+                    width = formats.get("width") or 0
+                    fps = formats.get("fps") or 0
 
                     # Determine quality label
                     quality_label = ""
@@ -280,16 +280,23 @@ async def echo(bot: Client, update: Message):
                             approx_file_size = "~100MB"
 
                     cb_string_video = "{}|{}|{}".format("video", format_id, format_ext)
+                    cb_string_file = "{}|{}|{}".format("file", format_id, format_ext)
 
                     # Create button text with quality and size
-                    button_text = f"📹 {quality_label} / {approx_file_size}"
+                    button_text_video = f"📹 {quality_label} / {approx_file_size}"
+                    button_text_file = f"📄 {quality_label} / {approx_file_size}"
                     if fps and fps > 30:
-                        button_text += f" ({int(fps)}fps)"
+                        button_text_video += f" ({int(fps)}fps)"
+                        button_text_file += f" ({int(fps)}fps)"
 
                     ikeyboard = [
                         InlineKeyboardButton(
-                            button_text,
+                            button_text_video,
                             callback_data=(cb_string_video).encode("UTF-8")
+                        ),
+                        InlineKeyboardButton(
+                            button_text_file,
+                            callback_data=(cb_string_file).encode("UTF-8")
                         )
                     ]
 
