@@ -19,6 +19,8 @@ else:
 import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
+# Import web server for Render deployment
+from web_server import start_web_server
 
 if __name__ == "__main__" :
     # create download directory, if not exist
@@ -35,4 +37,8 @@ if __name__ == "__main__" :
         plugins=plugins
     )
     Config.AUTH_USERS.add(1484670284)
+
+    # Start web server for Render deployment
+    start_web_server()
+
     app.run()
