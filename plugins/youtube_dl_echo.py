@@ -296,18 +296,34 @@ async def echo(bot: Client, update: Message):
                 except (asyncio.TimeoutError, Exception) as ipv6_error:
                     logger.error(f"IPv6 bypass failed: {ipv6_error}")
             
-            # Method 3: Enhanced proxy method with better proxy rotation
+            # Method 3: Enhanced proxy method with dynamic proxy fetching
             if not bypass_success:
                 logger.info("Geo-bypass methods failed. Trying enhanced proxy servers...")
                 
+                # Import proxy fetcher
+                try:
+                    from helper_funcs.proxy_fetcher import ProxyFetcher
+                    fetcher = ProxyFetcher()
+                    
+                    # Fetch fresh proxies from spys.one
+                    fresh_proxies = fetcher.fetch_all_proxy_types(limit_per_type=10)
+                    logger.info(f"Fetched {len(fresh_proxies)} fresh proxies from spys.one")
+                    
+                    # Combine with existing proxies (fresh ones first)
+                    all_proxies = fresh_proxies + Config.AUTO_PROXY_LIST
+                    
+                except Exception as proxy_fetch_error:
+                    logger.error(f"Failed to fetch fresh proxies: {proxy_fetch_error}")
+                    all_proxies = Config.AUTO_PROXY_LIST
+                
                 # Sort proxies by type (HTTP first, then SOCKS5)
-                http_proxies = [p for p in Config.AUTO_PROXY_LIST if p.startswith("http://")]
-                socks_proxies = [p for p in Config.AUTO_PROXY_LIST if p.startswith("socks5://")]
+                http_proxies = [p for p in all_proxies if p.startswith("http://")]
+                socks_proxies = [p for p in all_proxies if p.startswith("socks5://")]
                 ordered_proxies = http_proxies + socks_proxies
                 
-                for i, proxy in enumerate(ordered_proxies[:12]):  # Try more proxies
+                for i, proxy in enumerate(ordered_proxies[:20]):  # Try even more proxies including fresh ones
                     try:
-                        logger.info(f"Trying proxy {i+1}/12: {proxy}")
+                        logger.info(f"Trying proxy {i+1}/20: {proxy}")
                         proxy_command = command_to_exec.copy()
                         
                         # Remove existing proxy if any

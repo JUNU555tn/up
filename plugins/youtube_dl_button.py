@@ -225,21 +225,35 @@ async def youtube_dl_call_back(bot, update):
         except Exception as bypass_error:
             logger.error(f"Geo-bypass method failed: {bypass_error}")
         
-        # Method 2: If geo-bypass fails, try proxy servers
+        # Method 2: If geo-bypass fails, try proxy servers with fresh proxies
         if not bypass_success:
             await bot.edit_message_text(
-                text="🔄 Geo-bypass failed. Trying proxy servers...",
+                text="🔄 Geo-bypass failed. Fetching fresh proxy servers...",
                 chat_id=update.message.chat.id,
                 message_id=update.message.id
             )
             
+            # Fetch fresh proxies from spys.one
+            try:
+                from helper_funcs.proxy_fetcher import ProxyFetcher
+                fetcher = ProxyFetcher()
+                fresh_proxies = fetcher.fetch_all_proxy_types(limit_per_type=8)
+                logger.info(f"Fetched {len(fresh_proxies)} fresh proxies for download bypass")
+                
+                # Combine with existing proxies (fresh ones first)
+                all_proxies = fresh_proxies + Config.AUTO_PROXY_LIST
+                
+            except Exception as proxy_fetch_error:
+                logger.error(f"Failed to fetch fresh proxies for download: {proxy_fetch_error}")
+                all_proxies = Config.AUTO_PROXY_LIST
+            
             proxy_success = False
-            for i, proxy in enumerate(Config.AUTO_PROXY_LIST[:6]):  # Try first 6 proxies
+            for i, proxy in enumerate(all_proxies[:10]):  # Try more proxies including fresh ones
                 try:
-                    logger.info(f"Trying proxy {i+1}/6: {proxy}")
+                    logger.info(f"Trying proxy {i+1}/10: {proxy}")
                     
                     await bot.edit_message_text(
-                        text=f"🌐 Trying proxy server {i+1}/6...",
+                        text=f"🌐 Trying proxy server {i+1}/10...",
                         chat_id=update.message.chat.id,
                         message_id=update.message.id
                     )

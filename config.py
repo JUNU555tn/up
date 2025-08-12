@@ -74,6 +74,11 @@ class Config(object):
         'Connection': 'keep-alive',
         'Upgrade-Insecure-Requests': '1'
     }
+    
+    # Dynamic proxy fetching settings
+    ENABLE_DYNAMIC_PROXY_FETCH = True
+    PROXY_TEST_TIMEOUT = 8
+    MAX_FRESH_PROXIES_PER_TYPE = 10
     # maximum message length in Telegram
     MAX_MESSAGE_LENGTH = 40960
     # set timeout for subprocess
