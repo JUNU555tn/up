@@ -1,3 +1,4 @@
+
 aiohttp
 beautifulsoup4
 hachoir
@@ -16,3 +17,17 @@ gunicorn==20.1.0
 Jinja2
 werkzeug
 itsdangerous
+asyncio
+aiofiles
+psutil
+ffmpeg-python
+python-telegram-bot
+motor
+dnspython
+pymongo
+python-dotenv
+uvloop
+httpx
+nest_asyncio
+lxml
+python-multipart
