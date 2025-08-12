@@ -1,4 +1,4 @@
-modules = ["python-3.12"]
+modules = ["python-3.11", "python-3.12"]
 run = "python3 bot.py"
 
 [nix]
@@ -17,4 +17,4 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python3 bot.py"
+args = "python bot.py"
