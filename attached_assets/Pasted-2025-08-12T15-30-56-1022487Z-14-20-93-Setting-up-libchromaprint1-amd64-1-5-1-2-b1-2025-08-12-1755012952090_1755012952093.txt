@@ -1,0 +1,129 @@
+2025-08-12T15:30:56.1022487Z #14 20.93 Setting up libchromaprint1:amd64 (1.5.1-2+b1) ...
+2025-08-12T15:30:56.10225378Z #14 20.94 Setting up mesa-vdpau-drivers:amd64 (22.3.6-1+deb12u1) ...
+2025-08-12T15:30:56.10225804Z #14 20.96 Setting up libglx-mesa0:amd64 (22.3.6-1+deb12u1) ...
+2025-08-12T15:30:56.102274921Z #14 20.97 Setting up libavformat59:amd64 (7:5.1.6-0+deb12u1) ...
+2025-08-12T15:30:56.224777857Z #14 20.99 Setting up libglx0:amd64 (1.6.0-1) ...
+2025-08-12T15:30:56.224795227Z #14 21.01 Setting up libsphinxbase3:amd64 (0.8+5prealpha+1-16) ...
+2025-08-12T15:30:56.224799737Z #14 21.02 Setting up libpocketsphinx3:amd64 (0.8+5prealpha+1-15) ...
+2025-08-12T15:30:56.224803367Z #14 21.04 Setting up libgl1:amd64 (1.6.0-1) ...
+2025-08-12T15:30:56.224807447Z #14 21.06 Setting up va-driver-all:amd64 (2.17.0-1) ...
+2025-08-12T15:30:56.224811318Z #14 21.07 Setting up libvdpau-va-gl1:amd64 (0.4.2-1+b1) ...
+2025-08-12T15:30:56.224815288Z #14 21.10 Setting up libavfilter8:amd64 (7:5.1.6-0+deb12u1) ...
+2025-08-12T15:30:56.37575836Z #14 21.11 Setting up libavdevice59:amd64 (7:5.1.6-0+deb12u1) ...
+2025-08-12T15:30:56.378425591Z #14 21.13 Setting up vdpau-driver-all:amd64 (1.5-2) ...
+2025-08-12T15:30:56.378432691Z #14 21.15 Setting up ffmpeg (7:5.1.6-0+deb12u1) ...
+2025-08-12T15:30:56.378434911Z #14 21.17 Processing triggers for libc-bin (2.36-9+deb12u10) ...
+2025-08-12T15:31:00.880406205Z #14 DONE 25.8s
+2025-08-12T15:31:01.030783072Z 
+2025-08-12T15:31:01.030804723Z #15 exporting to docker image format
+2025-08-12T15:31:01.030809512Z #15 exporting layers
+2025-08-12T15:31:18.642809968Z #15 exporting layers 17.8s done
+2025-08-12T15:31:18.827688142Z #15 exporting manifest sha256:12cc5e07fb7caa67b894294653d0d55022f0a18431ca56bf56f87551f9acb4b7 done
+2025-08-12T15:31:18.827722943Z #15 exporting config sha256:6f003954503c065387f8e78b824a715cfbdb721b96504751edff8b6a491e84a3 done
+2025-08-12T15:31:26.153853677Z #15 DONE 25.3s
+2025-08-12T15:31:26.153871517Z 
+2025-08-12T15:31:26.153875377Z #16 exporting cache to client directory
+2025-08-12T15:31:26.153878228Z #16 preparing build cache for export
+2025-08-12T15:31:35.58482069Z #16 writing cache manifest sha256:36aabc8e0d98dec26a725a2b07d403740c9eba5edc83439c0e6faa59cd6b25d0 0.0s done
+2025-08-12T15:31:35.584843901Z #16 DONE 9.3s
+2025-08-12T15:31:37.287730885Z Pushing image to registry...
+2025-08-12T15:31:49.027803967Z Upload succeeded
+2025-08-12T15:31:52.485231248Z ==> Deploying...
+2025-08-12T15:32:10.515355824Z 2025-08-12 15:32:10,515 - pyrogram.crypto.aes - INFO - Using TgCrypto
+2025-08-12T15:32:11.138866074Z 2025-08-12 15:32:11,138 - asyncio - DEBUG - Using selector: EpollSelector
+2025-08-12T15:32:11.917674037Z 2025-08-12 15:32:11,917 - __main__ - INFO - Starting bot application...
+2025-08-12T15:32:11.921709984Z  * Serving Flask app 'web_server'
+2025-08-12T15:32:11.921723864Z  * Debug mode: off
+2025-08-12T15:32:12.016697984Z 2025-08-12 15:32:12,016 - werkzeug - INFO - WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-08-12T15:32:12.016719305Z  * Running on all addresses (0.0.0.0)
+2025-08-12T15:32:12.016722265Z  * Running on http://127.0.0.1:10000
+2025-08-12T15:32:12.016725525Z  * Running on http://10.214.17.17:10000
+2025-08-12T15:32:12.016799787Z 2025-08-12 15:32:12,016 - werkzeug - INFO - Press CTRL+C to quit
+2025-08-12T15:32:12.814606002Z 2025-08-12 15:32:12,814 - werkzeug - INFO - 127.0.0.1 - - [12/Aug/2025 15:32:12] "HEAD / HTTP/1.1" 200 -
+2025-08-12T15:32:13.717937387Z ==> Your service is live 🎉
+2025-08-12T15:32:13.759652992Z ==> 
+2025-08-12T15:32:13.786626328Z ==> ///////////////////////////////////////////////////////////
+2025-08-12T15:32:13.814373855Z ==> 
+2025-08-12T15:32:13.841126421Z ==> Available at your primary URL https://up-wy5c.onrender.com
+2025-08-12T15:32:13.869397207Z ==> 
+2025-08-12T15:32:13.896059484Z ==> ///////////////////////////////////////////////////////////
+2025-08-12T15:32:15.951864101Z 2025-08-12 15:32:15,951 - werkzeug - INFO - 127.0.0.1 - - [12/Aug/2025 15:32:15] "GET / HTTP/1.1" 200 -
+2025-08-12T15:32:44.142351321Z 2025-08-12 15:32:44,142 - plugins.youtube_dl_echo - INFO - {
+2025-08-12T15:32:44.142371972Z     "_": "User",
+2025-08-12T15:32:44.142376762Z     "id": 6415368038,
+2025-08-12T15:32:44.142380422Z     "is_self": false,
+2025-08-12T15:32:44.142383942Z     "is_contact": false,
+2025-08-12T15:32:44.142387833Z     "is_mutual_contact": false,
+2025-08-12T15:32:44.142391423Z     "is_deleted": false,
+2025-08-12T15:32:44.142394873Z     "is_bot": false,
+2025-08-12T15:32:44.142398423Z     "is_verified": false,
+2025-08-12T15:32:44.142401953Z     "is_restricted": false,
+2025-08-12T15:32:44.142405383Z     "is_scam": false,
+2025-08-12T15:32:44.142408803Z     "is_fake": false,
+2025-08-12T15:32:44.142412693Z     "is_support": false,
+2025-08-12T15:32:44.142416154Z     "is_premium": false,
+2025-08-12T15:32:44.142419574Z     "first_name": "Jack",
+2025-08-12T15:32:44.142423054Z     "last_name": "Sparrow 🔥",
+2025-08-12T15:32:44.142426974Z     "status": "UserStatus.RECENTLY",
+2025-08-12T15:32:44.142430454Z     "username": "Pawsismyson",
+2025-08-12T15:32:44.142433944Z     "language_code": "en"
+2025-08-12T15:32:44.142437424Z }
+2025-08-12T15:32:44.144419162Z 2025-08-12 15:32:44,144 - filelock - DEBUG - Attempting to acquire lock 138371432537872 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T15:32:44.144629888Z 2025-08-12 15:32:44,144 - filelock - DEBUG - Lock 138371432537872 acquired on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T15:32:44.145064191Z 2025-08-12 15:32:44,144 - filelock - DEBUG - Attempting to acquire lock 138371189917520 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T15:32:44.145219255Z 2025-08-12 15:32:44,145 - filelock - DEBUG - Lock 138371189917520 acquired on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T15:32:44.146344997Z 2025-08-12 15:32:44,146 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): publicsuffix.org:443
+2025-08-12T15:32:44.197986698Z 2025-08-12 15:32:44,197 - urllib3.connectionpool - DEBUG - https://publicsuffix.org:443 "GET /list/public_suffix_list.dat HTTP/1.1" 200 87885
+2025-08-12T15:32:44.216233588Z 2025-08-12 15:32:44,216 - filelock - DEBUG - Attempting to release lock 138371189917520 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T15:32:44.22043281Z 2025-08-12 15:32:44,216 - filelock - DEBUG - Lock 138371189917520 released on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T15:32:44.227368081Z 2025-08-12 15:32:44,227 - filelock - DEBUG - Attempting to release lock 138371432537872 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T15:32:44.227395752Z 2025-08-12 15:32:44,227 - filelock - DEBUG - Lock 138371432537872 released on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T15:33:00.02649783Z 2025-08-12 15:33:00,026 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.pussyboy.net:443
+2025-08-12T15:33:00.508418586Z 2025-08-12 15:33:00,508 - urllib3.connectionpool - DEBUG - https://www.pussyboy.net:443 "GET /thumb/teen-brunette-step-daughter-wants-step-dad-to-help-her-orgasm-taboo-sex-video.jpg HTTP/1.1" 200 16627
+2025-08-12T15:33:13.560954695Z 2025-08-12 15:33:13,560 - plugins.youtube_dl_button - INFO - ['yt-dlp', '-c', '--max-filesize', '2097152000', '--embed-subs', '-f', '0', '--hls-prefer-ffmpeg', '--merge-output-format', 'webm', 'https://www.pussyboy.net/video/6972/teen-brunette-step-daughter-wants-step-dad-to-help-her-orgasm-taboo-sex-video/', '-o', './DOWNLOADS/6415368038/Teen Brunette Step Daughter Wants Step Dad To Help Her Orgasm Taboo Sex Video (1)_0.mp4', '--no-warnings']
+2025-08-12T15:33:23.621906296Z 2025-08-12 15:33:23,621 - plugins.youtube_dl_button - INFO - 
+2025-08-12T15:33:23.621946938Z 2025-08-12 15:33:23,621 - plugins.youtube_dl_button - INFO - [generic] Extracting URL: https://www.pussyboy.net/video/6972/teen-brunette-step-daughter-wants-step-dad-to-help-her-orgasm-taboo-sex-video/
+2025-08-12T15:33:23.621956268Z [generic] teen-brunette-step-daughter-wants-step-dad-to-help-her-orgasm-taboo-sex-video: Downloading webpage
+2025-08-12T15:33:23.621960838Z [generic] teen-brunette-step-daughter-wants-step-dad-to-help-her-orgasm-taboo-sex-video: Extracting information
+2025-08-12T15:33:23.621965688Z [info] teen-brunette-step-daughter-wants-step-dad-to-help-her-orgasm-taboo-sex-video-1: Downloading 1 format(s): 0
+2025-08-12T15:33:23.621970438Z [info] There are no subtitles for the requested languages
+2025-08-12T15:33:23.621975629Z [download] Destination: ./DOWNLOADS/6415368038/Teen Brunette Step Daughter Wants Step Dad To Help Her Orgasm Taboo Sex Video (1)_0.mp4
+2025-08-12T15:33:23.621979419Z [download]   0.0% of   13.80MiB at  Unknown B/s ETA Unknown[download]   0.0% of   13.80MiB at    2.83MiB/s ETA 00:04  [download]   0.0% of   13.80MiB at    4.66MiB/s ETA 00:02[download]   0.1% of   13.80MiB at    7.77MiB/s ETA 00:01[download]   0.2% of   13.80MiB at    6.12MiB/s ETA 00:02[download]   0.4% of   13.80MiB at    5.18MiB/s ETA 00:02[download]   0.9% of   13.80MiB at    6.50MiB/s ETA 00:02[download]   1.8% of   13.80MiB at    4.65MiB/s ETA 00:02[download]   3.6% of   13.80MiB at    8.10MiB/s ETA 00:01[download]   7.2% of   13.80MiB at    8.18MiB/s ETA 00:01[download]  14.5% of   13.80MiB at    8.84MiB/s ETA 00:01[download]  29.0% of   13.80MiB at   11.73MiB/s ETA 00:00[download]  58.0% of   13.80MiB at   15.03MiB/s ETA 00:00[download]  86.9% of   13.80MiB at   18.46MiB/s ETA 00:00[download] 100.0% of   13.80MiB at   18.87MiB/s ETA 00:00[download] 100% of   13.80MiB in 00:00:01 at 10.57MiB/s  
+2025-08-12T15:33:23.621983379Z [EmbedSubtitle] There aren't any subtitles to embed
+2025-08-12T15:33:31.217649125Z 2025-08-12 15:33:31,217 - plugins.youtube_dl_button - INFO - ['./DOWNLOADS/6415368038/1755012803.6248193.jpg', './DOWNLOADS/6415368038/1755012804.419777.jpg', './DOWNLOADS/6415368038/1755012805.2247841.jpg', './DOWNLOADS/6415368038/1755012806.1150806.jpg', './DOWNLOADS/6415368038/1755012806.9244947.jpg', './DOWNLOADS/6415368038/1755012807.8265338.jpg', './DOWNLOADS/6415368038/1755012808.7159998.jpg', './DOWNLOADS/6415368038/1755012809.524901.jpg', './DOWNLOADS/6415368038/1755012810.3240976.jpg']
+2025-08-12T15:33:40.390760189Z 2025-08-12 15:33:40,389 - pyrogram.dispatcher - ERROR - Invalid parse mode "html"
+2025-08-12T15:33:40.390798411Z Traceback (most recent call last):
+2025-08-12T15:33:40.390804671Z   File "/usr/local/lib/python3.11/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+2025-08-12T15:33:40.390809601Z     await handler.callback(self.client, *args)
+2025-08-12T15:33:40.390814661Z   File "/app/plugins/cb_buttons.py", line 124, in button
+2025-08-12T15:33:40.390819421Z     await youtube_dl_call_back(bot, update)
+2025-08-12T15:33:40.390824551Z   File "/app/plugins/youtube_dl_button.py", line 434, in youtube_dl_call_back
+2025-08-12T15:33:40.390829561Z     await bot.send_media_group(
+2025-08-12T15:33:40.390834221Z   File "/usr/local/lib/python3.11/site-packages/pyrogram/methods/messages/send_media_group.py", line 389, in send_media_group
+2025-08-12T15:33:40.390838732Z     **await self.parser.parse(i.caption, i.parse_mode)
+2025-08-12T15:33:40.390842822Z       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-12T15:33:40.390847062Z   File "/usr/local/lib/python3.11/site-packages/pyrogram/parser/parser.py", line 54, in parse
+2025-08-12T15:33:40.390852422Z     raise ValueError(f'Invalid parse mode "{mode}"')
+2025-08-12T15:33:40.390856012Z ValueError: Invalid parse mode "html"
+2025-08-12T15:33:49.454028515Z 2025-08-12 15:33:49,453 - plugins.youtube_dl_echo - INFO - {
+2025-08-12T15:33:49.454048785Z     "_": "User",
+2025-08-12T15:33:49.454054776Z     "id": 6415368038,
+2025-08-12T15:33:49.454058405Z     "is_self": false,
+2025-08-12T15:33:49.454061966Z     "is_contact": false,
+2025-08-12T15:33:49.454066006Z     "is_mutual_contact": false,
+2025-08-12T15:33:49.454070106Z     "is_deleted": false,
+2025-08-12T15:33:49.454073646Z     "is_bot": false,
+2025-08-12T15:33:49.454077096Z     "is_verified": false,
+2025-08-12T15:33:49.454080596Z     "is_restricted": false,
+2025-08-12T15:33:49.454084046Z     "is_scam": false,
+2025-08-12T15:33:49.454089286Z     "is_fake": false,
+2025-08-12T15:33:49.454095337Z     "is_support": false,
+2025-08-12T15:33:49.454100577Z     "is_premium": false,
+2025-08-12T15:33:49.454106097Z     "first_name": "Jack",
+2025-08-12T15:33:49.454111347Z     "last_name": "Sparrow 🔥",
+2025-08-12T15:33:49.454117737Z     "status": "UserStatus.RECENTLY",
+2025-08-12T15:33:49.454122227Z     "username": "Pawsismyson",
+2025-08-12T15:33:49.454126387Z     "language_code": "en"
+2025-08-12T15:33:49.454129868Z }
+2025-08-12T15:33:56.018185114Z 2025-08-12 15:33:56,017 - plugins.youtube_dl_echo - INFO - Trying proxy for info extraction: socks5://198.23.239.134:10300
+2025-08-12T15:34:01.717637524Z 2025-08-12 15:34:01,717 - plugins.youtube_dl_echo - INFO - Trying proxy for info extraction: socks5://72.210.252.137:4145
