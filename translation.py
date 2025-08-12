@@ -10,7 +10,7 @@ Just send me urls. You can send HTTP/HTTPS direct links. I will check and start 
     SET_CUSTOM_USERNAME_PASSWORD = """If you want to download premium videos, provide in the following format:
 URL | filename | username | password"""
     DOWNLOAD_START = "Download started in **Lazy mode...**"
-    UPLOAD_START = "Processing upload..."
+    UPLOAD_START = "📤 **Upload Status**\n\nUploading to Telegram..."
     RCHD_TG_API_LIMIT = "Downloaded in {} seconds.\nDetected File Size: {}\nSorry. But, I cannot upload files greater than 2GB due to Telegram API limitations."
     AFTER_SUCCESSFUL_UPLOAD_MSG = "Thank you <a href='https://t.me/LazyDeveloperr'>**LazyDeveloperr**</a> for helping us in this journey ❤️"
     AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "Downloaded in {} seconds.\nUploaded in {} seconds.\n\n@LazyDeveloperr"

@@ -303,16 +303,27 @@ async def download_coroutine(bot, session, url, file_name, chat_id, message_id, 
                         (total_length - downloaded) / speed) * 1000
                     estimated_total_time = elapsed_time + time_to_completion
                     try:
-                        current_message = """\n\n** ⭑┗━┫⦀⦙ Download Status ⦙⦀┣━┛⭑**
-⚡️ 𝗨𝗥𝗟: <a href='{}'>❝ 𝐋𝐚𝐳𝐲 𝐔𝐫𝐥 ❞</a>
-🎲 𝗙𝗶𝗹𝗲 𝗦𝗶𝘇𝗲: {}
-⏳ 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱𝗲𝗱: {}
-🧭 ЄTА: {}""".format(
-    url,
-    humanbytes(total_length),
-    humanbytes(downloaded),
-    TimeFormatter(estimated_total_time)
-)
+                        percentage = (downloaded / total_length) * 100
+                        speed_mbps = (downloaded / diff) / (1024 * 1024)  # Speed in MB/s
+                        
+                        # Enhanced progress bar
+                        filled_length = int(round(20 * downloaded / total_length))
+                        bar = '█' * filled_length + '░' * (20 - filled_length)
+                        
+                        current_message = f"""📥 **Download Status**
+
+{bar} {percentage:.1f}%
+
+🌐 **URL:** <a href='{url}'>📎 Source Link</a>
+
+📊 **Live Statistics:**
+• **Total Size:** {humanbytes(total_length)}
+• **Downloaded:** {humanbytes(downloaded)}
+• **Speed:** {speed_mbps:.2f} MB/s
+• **ETA:** {TimeFormatter(estimated_total_time)}
+• **Progress:** {percentage:.1f}% Complete
+
+⚡️ **Status:** Downloading..."""
                         if current_message != display_message:
                             await bot.edit_message_text(
                                 chat_id,
