@@ -195,62 +195,136 @@ async def echo(bot: Client, update: Message):
         t_response = stdout.decode().strip()
         # logger.info(t_response)
         
-        # Check for geo-restriction and retry with proxy
+        # Check for geo-restriction and try multiple bypass methods
         if e_response and ("not made this video available in your country" in e_response or 
                            "not available in your country" in e_response or
-                           "blocked in your country" in e_response):
+                           "blocked in your country" in e_response or
+                           "geo blocked" in e_response.lower() or
+                           "geo-blocked" in e_response.lower()):
             
-            # Try with each proxy in the list
-            for proxy in Config.AUTO_PROXY_LIST:
+            logger.info("Geo-restriction detected. Attempting bypass methods...")
+            
+            # Method 1: Try with different extractors and bypass options
+            bypass_commands = []
+            
+            # Add geo bypass options
+            geo_bypass_cmd = command_to_exec.copy()
+            geo_bypass_cmd.extend([
+                "--geo-bypass", 
+                "--geo-bypass-country", "US",
+                "--user-agent", Config.BYPASS_HEADERS['User-Agent'],
+                "--referer", "https://www.google.com/",
+                "--add-header", "Accept-Language:en-US,en;q=0.9"
+            ])
+            bypass_commands.append(("geo-bypass", geo_bypass_cmd))
+            
+            # Try different format selection to avoid region locks
+            format_bypass_cmd = command_to_exec.copy()
+            format_bypass_cmd.extend([
+                "--format", "worst",
+                "--geo-bypass",
+                "--user-agent", Config.BYPASS_HEADERS['User-Agent']
+            ])
+            bypass_commands.append(("format-bypass", format_bypass_cmd))
+            
+            # Try each bypass method
+            for method_name, bypass_cmd in bypass_commands:
                 try:
-                    logger.info(f"Trying proxy for info extraction: {proxy}")
-                    proxy_command = command_to_exec.copy()
+                    logger.info(f"Trying {method_name} method")
+                    bypass_process = await asyncio.wait_for(
+                        asyncio.create_subprocess_exec(
+                            *bypass_cmd,
+                            stdout=asyncio.subprocess.PIPE,
+                            stderr=asyncio.subprocess.PIPE,
+                        ),
+                        timeout=45
+                    )
                     
-                    # Remove existing proxy if any
-                    if "--proxy" in proxy_command:
-                        proxy_index = proxy_command.index("--proxy")
-                        proxy_command.pop(proxy_index)
-                        proxy_command.pop(proxy_index)
+                    bypass_stdout, bypass_stderr = await asyncio.wait_for(
+                        bypass_process.communicate(),
+                        timeout=45
+                    )
                     
-                    # Add new proxy and socket timeout
-                    proxy_command.extend(["--proxy", proxy])
-                    proxy_command.extend(["--socket-timeout", "30"])
+                    bypass_e_response = bypass_stderr.decode().strip()
+                    bypass_t_response = bypass_stdout.decode().strip()
                     
-                    # Retry info extraction with proxy (with timeout)
-                    try:
-                        proxy_process = await asyncio.wait_for(
-                            asyncio.create_subprocess_exec(
-                                *proxy_command,
-                                stdout=asyncio.subprocess.PIPE,
-                                stderr=asyncio.subprocess.PIPE,
-                            ),
-                            timeout=60  # 1 minute timeout for info extraction
-                        )
+                    if (bypass_t_response and 
+                        not ("not made this video available in your country" in bypass_e_response) and
+                        not ("geo" in bypass_e_response.lower() and "block" in bypass_e_response.lower())):
+                        logger.info(f"Success with {method_name} method")
+                        e_response = bypass_e_response
+                        t_response = bypass_t_response
+                        break
                         
-                        proxy_stdout, proxy_stderr = await asyncio.wait_for(
-                            proxy_process.communicate(),
-                            timeout=60
-                        )
-                        
-                        proxy_e_response = proxy_stderr.decode().strip()
-                        proxy_t_response = proxy_stdout.decode().strip()
-                        
-                        # If successful, use proxy results
-                        if (proxy_t_response and 
-                            not ("not made this video available in your country" in proxy_e_response) and
-                            not ("blocked in your country" in proxy_e_response)):
-                            logger.info(f"Success with proxy: {proxy}")
-                            e_response = proxy_e_response
-                            t_response = proxy_t_response
-                            break
-                            
-                    except asyncio.TimeoutError:
-                        logger.error(f"Proxy {proxy} timed out during info extraction")
-                        continue
-                        
-                except Exception as proxy_error:
-                    logger.error(f"Proxy {proxy} failed: {proxy_error}")
+                except asyncio.TimeoutError:
+                    logger.error(f"{method_name} method timed out")
                     continue
+                except Exception as bypass_error:
+                    logger.error(f"{method_name} method failed: {bypass_error}")
+                    continue
+            
+            # Method 2: If geo-bypass fails, try with proxy list
+            if not t_response or "not made this video available in your country" in e_response:
+                logger.info("Geo-bypass methods failed. Trying proxy servers...")
+                
+                for i, proxy in enumerate(Config.AUTO_PROXY_LIST[:8]):  # Limit to first 8 proxies
+                    try:
+                        logger.info(f"Trying proxy {i+1}/8: {proxy}")
+                        proxy_command = command_to_exec.copy()
+                        
+                        # Remove existing proxy if any
+                        if "--proxy" in proxy_command:
+                            proxy_index = proxy_command.index("--proxy")
+                            proxy_command.pop(proxy_index)
+                            proxy_command.pop(proxy_index)
+                        
+                        # Add new proxy and additional bypass options
+                        proxy_command.extend([
+                            "--proxy", proxy,
+                            "--socket-timeout", "25",
+                            "--geo-bypass",
+                            "--user-agent", Config.BYPASS_HEADERS['User-Agent'],
+                            "--add-header", "Accept-Language:en-US,en;q=0.9"
+                        ])
+                        
+                        # Retry with proxy (shorter timeout for faster iteration)
+                        try:
+                            proxy_process = await asyncio.wait_for(
+                                asyncio.create_subprocess_exec(
+                                    *proxy_command,
+                                    stdout=asyncio.subprocess.PIPE,
+                                    stderr=asyncio.subprocess.PIPE,
+                                ),
+                                timeout=35  # Shorter timeout per proxy
+                            )
+                            
+                            proxy_stdout, proxy_stderr = await asyncio.wait_for(
+                                proxy_process.communicate(),
+                                timeout=35
+                            )
+                            
+                            proxy_e_response = proxy_stderr.decode().strip()
+                            proxy_t_response = proxy_stdout.decode().strip()
+                            
+                            # Check if proxy worked
+                            if (proxy_t_response and 
+                                not ("not made this video available in your country" in proxy_e_response) and
+                                not ("blocked in your country" in proxy_e_response) and
+                                not ("geo" in proxy_e_response.lower() and "block" in proxy_e_response.lower())):
+                                logger.info(f"Success with proxy: {proxy}")
+                                e_response = proxy_e_response
+                                t_response = proxy_t_response
+                                break
+                            else:
+                                logger.info(f"Proxy {proxy} still geo-blocked or failed")
+                                
+                        except asyncio.TimeoutError:
+                            logger.error(f"Proxy {proxy} timed out")
+                            continue
+                            
+                    except Exception as proxy_error:
+                        logger.error(f"Proxy {proxy} failed: {proxy_error}")
+                        continue
         
         # https://github.com/rg3/youtube-dl/issues/2630#issuecomment-38635239
         if e_response and "nonnumeric port" not in e_response:

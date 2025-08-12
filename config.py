@@ -23,21 +23,45 @@ class Config(object):
     # Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061
     HTTP_PROXY = os.environ.get("HTTP_PROXY", "")
     
-    # Auto proxy list for geo-restricted content
+    # Auto proxy list for geo-restricted content - updated with more reliable sources
     AUTO_PROXY_LIST = [
+        # Public SOCKS5 proxies
+        "socks5://51.210.21.186:1080",
+        "socks5://192.111.139.165:4145",
+        "socks5://192.252.208.70:14282",
+        "socks5://184.178.172.28:15294",
+        "socks5://72.195.34.58:4145",
+        "socks5://72.37.216.68:4145",
+        "socks5://184.178.172.25:15291",
+        "socks5://192.252.214.20:15864",
+        "socks5://72.210.252.134:46164",
+        "socks5://72.195.114.184:4145",
+        # HTTP proxies
+        "http://103.152.112.162:80",
+        "http://20.111.54.16:8123",
+        "http://103.149.53.120:59166",
+        "http://47.243.95.228:10080",
+        "http://154.236.168.181:1981",
+        # Additional SOCKS5 proxies from different regions
         "socks5://198.23.239.134:10300",
-        "socks5://72.210.252.137:4145", 
-        "socks5://72.195.34.59:4145",
+        "socks5://72.210.252.137:4145",
         "socks5://138.68.109.12:40138",
         "socks5://198.8.94.174:39078",
-        "http://47.243.95.228:10080",
-        "http://103.149.53.120:59166",
-        "http://20.111.54.16:80",
-        "socks5://103.127.204.109:25327",
-        "socks5://72.195.114.184:4145",
-        "http://154.236.168.181:1981",
-        "socks5://184.178.172.25:15291"
+        "socks5://103.127.204.109:25327"
     ]
+    
+    # Alternative extraction methods for geo-restricted content
+    USE_ALTERNATIVE_EXTRACTORS = True
+    
+    # VPN-like headers to help bypass geo-restrictions
+    BYPASS_HEADERS = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Accept-Encoding': 'gzip, deflate',
+        'DNT': '1',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1'
+    }
     # maximum message length in Telegram
     MAX_MESSAGE_LENGTH = 40960
     # set timeout for subprocess

@@ -170,82 +170,159 @@ async def youtube_dl_call_back(bot, update):
     logger.info(e_response)
     logger.info(t_response)
     
-    # Check for geo-restriction error and retry with proxy
+    # Enhanced geo-restriction bypass for downloads
     if e_response and ("not made this video available in your country" in e_response or 
                        "not available in your country" in e_response or
-                       "blocked in your country" in e_response):
+                       "blocked in your country" in e_response or
+                       "geo blocked" in e_response.lower() or
+                       "geo-blocked" in e_response.lower()):
         
         await bot.edit_message_text(
-            text="Video is geo-restricted. Trying with proxy...",
+            text="🌍 Video is geo-restricted. Attempting location bypass...",
             chat_id=update.message.chat.id,
             message_id=update.message.id
         )
         
-        # Try with each proxy in the list
-        proxy_success = False
-        for proxy in Config.AUTO_PROXY_LIST:
-            try:
-                logger.info(f"Trying proxy: {proxy}")
-                proxy_command = command_to_exec.copy()
-                
-                # Remove existing proxy if any
-                if "--proxy" in proxy_command:
-                    proxy_index = proxy_command.index("--proxy")
-                    proxy_command.pop(proxy_index)  # Remove --proxy
-                    proxy_command.pop(proxy_index)  # Remove proxy value
-                
-                # Add new proxy and socket timeout
-                proxy_command.extend(["--proxy", proxy])
-                proxy_command.extend(["--socket-timeout", "30"])
-                
-                # Retry download with proxy (with timeout)
-                try:
-                    proxy_process = await asyncio.wait_for(
-                        asyncio.create_subprocess_exec(
-                            *proxy_command,
-                            stdout=asyncio.subprocess.PIPE,
-                            stderr=asyncio.subprocess.PIPE,
-                        ),
-                        timeout=120  # 2 minute timeout per proxy
-                    )
-                    
-                    proxy_stdout, proxy_stderr = await asyncio.wait_for(
-                        proxy_process.communicate(),
-                        timeout=120
-                    )
-                    
-                    proxy_e_response = proxy_stderr.decode().strip()
-                    proxy_t_response = proxy_stdout.decode().strip()
-                    
-                    # Check if proxy worked
-                    if (proxy_t_response and 
-                        not ("not made this video available in your country" in proxy_e_response) and
-                        not ("blocked in your country" in proxy_e_response) and
-                        not ("ERROR:" in proxy_e_response and "proxy" in proxy_e_response.lower())):
-                        
-                        logger.info(f"Success with proxy: {proxy}")
-                        e_response = proxy_e_response
-                        t_response = proxy_t_response
-                        proxy_success = True
-                        break
-                    else:
-                        logger.info(f"Proxy {proxy} still geo-blocked or failed")
-                        
-                except asyncio.TimeoutError:
-                    logger.error(f"Proxy {proxy} timed out")
-                    continue
-                    
-            except Exception as proxy_error:
-                logger.error(f"Proxy {proxy} failed: {proxy_error}")
-                continue
+        # Method 1: Try geo-bypass options first
+        bypass_success = False
         
-        if not proxy_success and not t_response:
-            await bot.edit_message_text(
-                chat_id=update.message.chat.id,
-                message_id=update.message.id,
-                text="❌ Video is geo-restricted and all proxy attempts failed. The content may be heavily restricted or proxies are not working. Try again later or use a different link."
+        try:
+            logger.info("Attempting geo-bypass method")
+            bypass_command = command_to_exec.copy()
+            bypass_command.extend([
+                "--geo-bypass",
+                "--geo-bypass-country", "US", 
+                "--user-agent", Config.BYPASS_HEADERS['User-Agent'],
+                "--referer", "https://www.youtube.com/",
+                "--add-header", "Accept-Language:en-US,en;q=0.9"
+            ])
+            
+            bypass_process = await asyncio.wait_for(
+                asyncio.create_subprocess_exec(
+                    *bypass_command,
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE,
+                ),
+                timeout=90
             )
-            return False
+            
+            bypass_stdout, bypass_stderr = await asyncio.wait_for(
+                bypass_process.communicate(),
+                timeout=90
+            )
+            
+            bypass_e_response = bypass_stderr.decode().strip()
+            bypass_t_response = bypass_stdout.decode().strip()
+            
+            if (bypass_t_response and 
+                not ("not made this video available in your country" in bypass_e_response) and
+                not ("geo" in bypass_e_response.lower() and "block" in bypass_e_response.lower())):
+                logger.info("Success with geo-bypass method")
+                e_response = bypass_e_response
+                t_response = bypass_t_response
+                bypass_success = True
+                
+        except Exception as bypass_error:
+            logger.error(f"Geo-bypass method failed: {bypass_error}")
+        
+        # Method 2: If geo-bypass fails, try proxy servers
+        if not bypass_success:
+            await bot.edit_message_text(
+                text="🔄 Geo-bypass failed. Trying proxy servers...",
+                chat_id=update.message.chat.id,
+                message_id=update.message.id
+            )
+            
+            proxy_success = False
+            for i, proxy in enumerate(Config.AUTO_PROXY_LIST[:6]):  # Try first 6 proxies
+                try:
+                    logger.info(f"Trying proxy {i+1}/6: {proxy}")
+                    
+                    await bot.edit_message_text(
+                        text=f"🌐 Trying proxy server {i+1}/6...",
+                        chat_id=update.message.chat.id,
+                        message_id=update.message.id
+                    )
+                    
+                    proxy_command = command_to_exec.copy()
+                    
+                    # Remove existing proxy if any
+                    if "--proxy" in proxy_command:
+                        proxy_index = proxy_command.index("--proxy")
+                        proxy_command.pop(proxy_index)
+                        proxy_command.pop(proxy_index)
+                    
+                    # Add proxy and enhanced bypass options
+                    proxy_command.extend([
+                        "--proxy", proxy,
+                        "--socket-timeout", "30",
+                        "--geo-bypass",
+                        "--user-agent", Config.BYPASS_HEADERS['User-Agent'],
+                        "--add-header", "Accept-Language:en-US,en;q=0.9"
+                    ])
+                    
+                    # Retry download with proxy
+                    try:
+                        proxy_process = await asyncio.wait_for(
+                            asyncio.create_subprocess_exec(
+                                *proxy_command,
+                                stdout=asyncio.subprocess.PIPE,
+                                stderr=asyncio.subprocess.PIPE,
+                            ),
+                            timeout=120
+                        )
+                        
+                        proxy_stdout, proxy_stderr = await asyncio.wait_for(
+                            proxy_process.communicate(),
+                            timeout=120
+                        )
+                        
+                        proxy_e_response = proxy_stderr.decode().strip()
+                        proxy_t_response = proxy_stdout.decode().strip()
+                        
+                        # Check if proxy worked
+                        if (proxy_t_response and 
+                            not ("not made this video available in your country" in proxy_e_response) and
+                            not ("blocked in your country" in proxy_e_response) and
+                            not ("geo" in proxy_e_response.lower() and "block" in proxy_e_response.lower())):
+                            
+                            logger.info(f"Success with proxy: {proxy}")
+                            e_response = proxy_e_response
+                            t_response = proxy_t_response
+                            proxy_success = True
+                            
+                            await bot.edit_message_text(
+                                text="✅ Successfully bypassed geo-restriction! Downloading...",
+                                chat_id=update.message.chat.id,
+                                message_id=update.message.id
+                            )
+                            break
+                        else:
+                            logger.info(f"Proxy {proxy} still geo-blocked or failed")
+                            
+                    except asyncio.TimeoutError:
+                        logger.error(f"Proxy {proxy} timed out")
+                        continue
+                        
+                except Exception as proxy_error:
+                    logger.error(f"Proxy {proxy} failed: {proxy_error}")
+                    continue
+            
+            if not proxy_success and not t_response:
+                await bot.edit_message_text(
+                    chat_id=update.message.chat.id,
+                    message_id=update.message.id,
+                    text="❌ **Location Bypass Failed**\n\n"
+                         "The video is heavily geo-restricted and all bypass methods failed:\n"
+                         "• Geo-bypass attempts: Failed\n"
+                         "• Proxy servers tested: Failed\n\n"
+                         "**Suggestions:**\n"
+                         "• Try again in a few minutes (servers may be busy)\n" 
+                         "• Check if the video is available in your region later\n"
+                         "• Try a different video link\n\n"
+                         "This video appears to be strictly region-locked."
+                )
+                return False
     
     ad_string_to_replace = "please report this issue on https://yt-dl.org/bug . Make sure you are using the latest version; see  https://yt-dl.org/update  on how to update. Be sure to call youtube-dl with the --verbose flag and include its complete output."
     if e_response and ad_string_to_replace in e_response:
