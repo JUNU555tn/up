@@ -182,6 +182,7 @@ async def youtube_dl_call_back(bot, update):
         )
         
         # Try with each proxy in the list
+        proxy_success = False
         for proxy in Config.AUTO_PROXY_LIST:
             try:
                 logger.info(f"Trying proxy: {proxy}")
@@ -193,36 +194,56 @@ async def youtube_dl_call_back(bot, update):
                     proxy_command.pop(proxy_index)  # Remove --proxy
                     proxy_command.pop(proxy_index)  # Remove proxy value
                 
-                # Add new proxy
+                # Add new proxy and socket timeout
                 proxy_command.extend(["--proxy", proxy])
+                proxy_command.extend(["--socket-timeout", "30"])
                 
-                # Retry download with proxy
-                proxy_process = await asyncio.create_subprocess_exec(
-                    *proxy_command,
-                    stdout=asyncio.subprocess.PIPE,
-                    stderr=asyncio.subprocess.PIPE,
-                )
-                
-                proxy_stdout, proxy_stderr = await proxy_process.communicate()
-                proxy_e_response = proxy_stderr.decode().strip()
-                proxy_t_response = proxy_stdout.decode().strip()
-                
-                # If successful, use proxy results
-                if proxy_t_response and not ("not made this video available in your country" in proxy_e_response):
-                    logger.info(f"Success with proxy: {proxy}")
-                    e_response = proxy_e_response
-                    t_response = proxy_t_response
-                    break
+                # Retry download with proxy (with timeout)
+                try:
+                    proxy_process = await asyncio.wait_for(
+                        asyncio.create_subprocess_exec(
+                            *proxy_command,
+                            stdout=asyncio.subprocess.PIPE,
+                            stderr=asyncio.subprocess.PIPE,
+                        ),
+                        timeout=120  # 2 minute timeout per proxy
+                    )
+                    
+                    proxy_stdout, proxy_stderr = await asyncio.wait_for(
+                        proxy_process.communicate(),
+                        timeout=120
+                    )
+                    
+                    proxy_e_response = proxy_stderr.decode().strip()
+                    proxy_t_response = proxy_stdout.decode().strip()
+                    
+                    # Check if proxy worked
+                    if (proxy_t_response and 
+                        not ("not made this video available in your country" in proxy_e_response) and
+                        not ("blocked in your country" in proxy_e_response) and
+                        not ("ERROR:" in proxy_e_response and "proxy" in proxy_e_response.lower())):
+                        
+                        logger.info(f"Success with proxy: {proxy}")
+                        e_response = proxy_e_response
+                        t_response = proxy_t_response
+                        proxy_success = True
+                        break
+                    else:
+                        logger.info(f"Proxy {proxy} still geo-blocked or failed")
+                        
+                except asyncio.TimeoutError:
+                    logger.error(f"Proxy {proxy} timed out")
+                    continue
                     
             except Exception as proxy_error:
                 logger.error(f"Proxy {proxy} failed: {proxy_error}")
                 continue
         
-        if not t_response:
+        if not proxy_success and not t_response:
             await bot.edit_message_text(
                 chat_id=update.message.chat.id,
                 message_id=update.message.id,
-                text="❌ Video is geo-restricted and all proxy attempts failed. Try using a VPN or different link."
+                text="❌ Video is geo-restricted and all proxy attempts failed. The content may be heavily restricted or proxies are not working. Try again later or use a different link."
             )
             return False
     
@@ -421,7 +442,7 @@ async def youtube_dl_call_back(bot, update):
                                 InputMediaPhoto(
                                     media=image,
                                     caption=caption,
-                                    parse_mode="html"
+                                    parse_mode=ParseMode.HTML
                                 )
                             )
                         else:

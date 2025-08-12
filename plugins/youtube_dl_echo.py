@@ -212,26 +212,41 @@ async def echo(bot: Client, update: Message):
                         proxy_command.pop(proxy_index)
                         proxy_command.pop(proxy_index)
                     
-                    # Add new proxy
+                    # Add new proxy and socket timeout
                     proxy_command.extend(["--proxy", proxy])
+                    proxy_command.extend(["--socket-timeout", "30"])
                     
-                    # Retry info extraction with proxy
-                    proxy_process = await asyncio.create_subprocess_exec(
-                        *proxy_command,
-                        stdout=asyncio.subprocess.PIPE,
-                        stderr=asyncio.subprocess.PIPE,
-                    )
-                    
-                    proxy_stdout, proxy_stderr = await proxy_process.communicate()
-                    proxy_e_response = proxy_stderr.decode().strip()
-                    proxy_t_response = proxy_stdout.decode().strip()
-                    
-                    # If successful, use proxy results
-                    if proxy_t_response and not ("not made this video available in your country" in proxy_e_response):
-                        logger.info(f"Success with proxy: {proxy}")
-                        e_response = proxy_e_response
-                        t_response = proxy_t_response
-                        break
+                    # Retry info extraction with proxy (with timeout)
+                    try:
+                        proxy_process = await asyncio.wait_for(
+                            asyncio.create_subprocess_exec(
+                                *proxy_command,
+                                stdout=asyncio.subprocess.PIPE,
+                                stderr=asyncio.subprocess.PIPE,
+                            ),
+                            timeout=60  # 1 minute timeout for info extraction
+                        )
+                        
+                        proxy_stdout, proxy_stderr = await asyncio.wait_for(
+                            proxy_process.communicate(),
+                            timeout=60
+                        )
+                        
+                        proxy_e_response = proxy_stderr.decode().strip()
+                        proxy_t_response = proxy_stdout.decode().strip()
+                        
+                        # If successful, use proxy results
+                        if (proxy_t_response and 
+                            not ("not made this video available in your country" in proxy_e_response) and
+                            not ("blocked in your country" in proxy_e_response)):
+                            logger.info(f"Success with proxy: {proxy}")
+                            e_response = proxy_e_response
+                            t_response = proxy_t_response
+                            break
+                            
+                    except asyncio.TimeoutError:
+                        logger.error(f"Proxy {proxy} timed out during info extraction")
+                        continue
                         
                 except Exception as proxy_error:
                     logger.error(f"Proxy {proxy} failed: {proxy_error}")
