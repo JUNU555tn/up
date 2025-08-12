@@ -1,0 +1,82 @@
+2025-08-12T15:43:14.76017555Z #14 19.70 Setting up mesa-vdpau-drivers:amd64 (22.3.6-1+deb12u1) ...
+2025-08-12T15:43:14.7601778Z #14 19.71 Setting up libglx-mesa0:amd64 (22.3.6-1+deb12u1) ...
+2025-08-12T15:43:14.76018993Z #14 19.73 Setting up libavformat59:amd64 (7:5.1.6-0+deb12u1) ...
+2025-08-12T15:43:14.76019266Z #14 19.75 Setting up libglx0:amd64 (1.6.0-1) ...
+2025-08-12T15:43:14.76019563Z #14 19.76 Setting up libsphinxbase3:amd64 (0.8+5prealpha+1-16) ...
+2025-08-12T15:43:14.87590391Z #14 19.78 Setting up libpocketsphinx3:amd64 (0.8+5prealpha+1-15) ...
+2025-08-12T15:43:14.875916731Z #14 19.79 Setting up libgl1:amd64 (1.6.0-1) ...
+2025-08-12T15:43:14.87591924Z #14 19.81 Setting up va-driver-all:amd64 (2.17.0-1) ...
+2025-08-12T15:43:14.875921011Z #14 19.83 Setting up libvdpau-va-gl1:amd64 (0.4.2-1+b1) ...
+2025-08-12T15:43:14.875922761Z #14 19.85 Setting up libavfilter8:amd64 (7:5.1.6-0+deb12u1) ...
+2025-08-12T15:43:14.875924421Z #14 19.86 Setting up libavdevice59:amd64 (7:5.1.6-0+deb12u1) ...
+2025-08-12T15:43:14.875926061Z #14 19.88 Setting up vdpau-driver-all:amd64 (1.5-2) ...
+2025-08-12T15:43:15.026094061Z #14 19.90 Setting up ffmpeg (7:5.1.6-0+deb12u1) ...
+2025-08-12T15:43:15.026111941Z #14 19.91 Processing triggers for libc-bin (2.36-9+deb12u10) ...
+2025-08-12T15:43:15.327483028Z #14 DONE 20.2s
+2025-08-12T15:43:15.327504139Z 
+2025-08-12T15:43:15.327509749Z #15 exporting to docker image format
+2025-08-12T15:43:15.327514259Z #15 exporting layers
+2025-08-12T15:43:32.679931981Z #15 exporting layers 17.3s done
+2025-08-12T15:43:32.679972052Z #15 exporting manifest sha256:32d6a95ee6f76db53066083e8241282d3d42eef8ab6e1078bd403b77eef2be1f done
+2025-08-12T15:43:32.679979612Z #15 exporting config sha256:0ff287355cbbfd49a898e28a5f7595c168815b2130db10336d27a3d061d810c9 done
+2025-08-12T15:43:40.096024567Z #15 DONE 24.9s
+2025-08-12T15:43:40.096043437Z 
+2025-08-12T15:43:40.096047408Z #16 exporting cache to client directory
+2025-08-12T15:43:40.096050398Z #16 preparing build cache for export
+2025-08-12T15:43:46.892098203Z #16 writing cache manifest sha256:347ee1bcd083da24301b6e53bf760f2427230b49e33872b263dc93c3341c101d
+2025-08-12T15:43:47.343443915Z #16 writing cache manifest sha256:347ee1bcd083da24301b6e53bf760f2427230b49e33872b263dc93c3341c101d 0.5s done
+2025-08-12T15:43:47.343463685Z #16 DONE 7.1s
+2025-08-12T15:43:49.152747003Z Pushing image to registry...
+2025-08-12T15:44:00.554333524Z Upload succeeded
+2025-08-12T15:44:03.307115073Z ==> Deploying...
+2025-08-12T15:44:22.583195303Z 2025-08-12 15:44:22,582 - pyrogram.crypto.aes - INFO - Using TgCrypto
+2025-08-12T15:44:23.092480853Z 2025-08-12 15:44:23,092 - asyncio - DEBUG - Using selector: EpollSelector
+2025-08-12T15:44:23.776215092Z 2025-08-12 15:44:23,776 - __main__ - INFO - Starting bot application...
+2025-08-12T15:44:23.779689415Z  * Serving Flask app 'web_server'
+2025-08-12T15:44:23.779707565Z  * Debug mode: off
+2025-08-12T15:44:23.874419833Z 2025-08-12 15:44:23,873 - werkzeug - INFO - WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-08-12T15:44:23.874448403Z  * Running on all addresses (0.0.0.0)
+2025-08-12T15:44:23.874451504Z  * Running on http://127.0.0.1:10000
+2025-08-12T15:44:23.874454433Z  * Running on http://10.214.94.146:10000
+2025-08-12T15:44:23.874528125Z 2025-08-12 15:44:23,874 - werkzeug - INFO - Press CTRL+C to quit
+2025-08-12T15:44:23.970350499Z 2025-08-12 15:44:23,970 - werkzeug - INFO - 127.0.0.1 - - [12/Aug/2025 15:44:23] "HEAD / HTTP/1.1" 200 -
+2025-08-12T15:44:25.863720356Z ==> Your service is live 🎉
+2025-08-12T15:44:25.895064662Z ==> 
+2025-08-12T15:44:25.924232898Z ==> ///////////////////////////////////////////////////////////
+2025-08-12T15:44:25.951573474Z ==> 
+2025-08-12T15:44:25.97987704Z ==> Available at your primary URL https://up-wy5c.onrender.com
+2025-08-12T15:44:26.007844077Z ==> 
+2025-08-12T15:44:26.043681482Z ==> ///////////////////////////////////////////////////////////
+2025-08-12T15:44:27.449859093Z 2025-08-12 15:44:27,449 - werkzeug - INFO - 127.0.0.1 - - [12/Aug/2025 15:44:27] "GET / HTTP/1.1" 200 -
+2025-08-12T15:44:56.585378598Z 2025-08-12 15:44:56,585 - plugins.youtube_dl_echo - INFO - {
+2025-08-12T15:44:56.585409769Z     "_": "User",
+2025-08-12T15:44:56.585414639Z     "id": 6415368038,
+2025-08-12T15:44:56.585418179Z     "is_self": false,
+2025-08-12T15:44:56.585421559Z     "is_contact": false,
+2025-08-12T15:44:56.585425829Z     "is_mutual_contact": false,
+2025-08-12T15:44:56.585429279Z     "is_deleted": false,
+2025-08-12T15:44:56.585432709Z     "is_bot": false,
+2025-08-12T15:44:56.585436109Z     "is_verified": false,
+2025-08-12T15:44:56.585439509Z     "is_restricted": false,
+2025-08-12T15:44:56.585442869Z     "is_scam": false,
+2025-08-12T15:44:56.585446219Z     "is_fake": false,
+2025-08-12T15:44:56.58544957Z     "is_support": false,
+2025-08-12T15:44:56.58545308Z     "is_premium": false,
+2025-08-12T15:44:56.58545646Z     "first_name": "Jack",
+2025-08-12T15:44:56.58545988Z     "last_name": "Sparrow 🔥",
+2025-08-12T15:44:56.58546388Z     "status": "UserStatus.RECENTLY",
+2025-08-12T15:44:56.58546729Z     "username": "Pawsismyson",
+2025-08-12T15:44:56.58547123Z     "language_code": "en"
+2025-08-12T15:44:56.58547465Z }
+2025-08-12T15:44:56.588501262Z 2025-08-12 15:44:56,588 - filelock - DEBUG - Attempting to acquire lock 126823542496336 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T15:44:56.588730658Z 2025-08-12 15:44:56,588 - filelock - DEBUG - Lock 126823542496336 acquired on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T15:44:56.589132558Z 2025-08-12 15:44:56,589 - filelock - DEBUG - Attempting to acquire lock 126823539164240 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T15:44:56.589309552Z 2025-08-12 15:44:56,589 - filelock - DEBUG - Lock 126823539164240 acquired on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T15:44:56.590372427Z 2025-08-12 15:44:56,590 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): publicsuffix.org:443
+2025-08-12T15:44:56.629816487Z 2025-08-12 15:44:56,629 - urllib3.connectionpool - DEBUG - https://publicsuffix.org:443 "GET /list/public_suffix_list.dat HTTP/1.1" 200 87849
+2025-08-12T15:44:56.648526053Z 2025-08-12 15:44:56,648 - filelock - DEBUG - Attempting to release lock 126823539164240 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T15:44:56.648562084Z 2025-08-12 15:44:56,648 - filelock - DEBUG - Lock 126823539164240 released on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T15:44:56.674632385Z 2025-08-12 15:44:56,674 - filelock - DEBUG - Attempting to release lock 126823542496336 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T15:44:56.674659996Z 2025-08-12 15:44:56,674 - filelock - DEBUG - Lock 126823542496336 released on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T15:45:03.580820779Z 2025-08-12 15:45:03,580 - plugins.youtube_dl_echo - INFO - Trying proxy for info extraction: socks5://198.23.239.134:10300
+2025-08-12T15:45:09.673907729Z 2025-08-12 15:45:09,673 - plugins.youtube_dl_echo - INFO - Trying proxy for info extraction: socks5://72.210.252.137:4145
