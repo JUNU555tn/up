@@ -23,31 +23,43 @@ class Config(object):
     # Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061
     HTTP_PROXY = os.environ.get("HTTP_PROXY", "")
     
-    # Auto proxy list for geo-restricted content - updated with more reliable sources
+    # Auto proxy list for geo-restricted content - fresh working proxies
     AUTO_PROXY_LIST = [
-        # Public SOCKS5 proxies
-        "socks5://51.210.21.186:1080",
-        "socks5://192.111.139.165:4145",
-        "socks5://192.252.208.70:14282",
-        "socks5://184.178.172.28:15294",
+        # Fresh HTTP proxies (often more reliable)
+        "http://45.77.55.173:8080",
+        "http://103.160.201.76:8080",
+        "http://103.149.53.120:59166",
+        "http://47.88.87.74:1080",
+        "http://134.209.29.120:8080",
+        "http://198.50.163.192:3129",
+        "http://149.129.179.23:8080",
+        "http://45.77.55.173:3128",
+        # Working SOCKS5 proxies
         "socks5://72.195.34.58:4145",
         "socks5://72.37.216.68:4145",
         "socks5://184.178.172.25:15291",
         "socks5://192.252.214.20:15864",
         "socks5://72.210.252.134:46164",
+        "socks5://184.178.172.28:15294",
+        "socks5://98.170.57.249:4145",
+        "socks5://72.221.164.34:60671",
+        "socks5://184.178.172.17:4145",
         "socks5://72.195.114.184:4145",
-        # HTTP proxies
+        # Additional HTTP proxies from different regions
         "http://103.152.112.162:80",
-        "http://20.111.54.16:8123",
-        "http://103.149.53.120:59166",
         "http://47.243.95.228:10080",
         "http://154.236.168.181:1981",
-        # Additional SOCKS5 proxies from different regions
-        "socks5://198.23.239.134:10300",
-        "socks5://72.210.252.137:4145",
-        "socks5://138.68.109.12:40138",
-        "socks5://198.8.94.174:39078",
-        "socks5://103.127.204.109:25327"
+        "http://20.111.54.16:8123",
+        "http://103.149.53.120:59166"
+    ]
+    
+    # Alternative domains for YouTube bypass
+    YOUTUBE_BYPASS_DOMAINS = [
+        "youtube.com",
+        "youtu.be", 
+        "m.youtube.com",
+        "music.youtube.com",
+        "www.youtube.com"
     ]
     
     # Alternative extraction methods for geo-restricted content
