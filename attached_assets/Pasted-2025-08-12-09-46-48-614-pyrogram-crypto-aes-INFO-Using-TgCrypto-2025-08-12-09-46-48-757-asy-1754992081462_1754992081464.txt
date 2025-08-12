@@ -1,0 +1,128 @@
+2025-08-12 09:46:48,614 - pyrogram.crypto.aes - INFO - Using TgCrypto
+2025-08-12 09:46:48,757 - asyncio - DEBUG - Using selector: EpollSelector
+2025-08-12 09:46:52,432 - pyrogram.dispatcher - ERROR - Invalid parse mode "html"
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/home/runner/workspace/plugins/help_text.py", line 33, in help_user
+    await bot.send_message(
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/pyrogram/methods/messages/send_message.py", line 124, in send_message
+    message, entities = (await utils.parse_text_entities(self, text, parse_mode, entities)).values()
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/pyrogram/utils.py", line 354, in parse_text_entities
+    text, entities = (await client.parser.parse(text, parse_mode)).values()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/pyrogram/parser/parser.py", line 54, in parse
+    raise ValueError(f'Invalid parse mode "{mode}"')
+ValueError: Invalid parse mode "html"
+2025-08-12 09:47:02,184 - plugins.youtube_dl_echo - INFO - {
+    "_": "User",
+    "id": 6415368038,
+    "is_self": false,
+    "is_contact": false,
+    "is_mutual_contact": false,
+    "is_deleted": false,
+    "is_bot": false,
+    "is_verified": false,
+    "is_restricted": false,
+    "is_scam": false,
+    "is_fake": false,
+    "is_support": false,
+    "is_premium": false,
+    "first_name": "Jack",
+    "last_name": "Sparrow 🔥",
+    "status": "UserStatus.RECENTLY",
+    "username": "Pawsismyson",
+    "language_code": "en"
+}
+2025-08-12 09:47:02,185 - filelock - DEBUG - Attempting to acquire lock 139816958106352 on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12 09:47:02,185 - filelock - DEBUG - Lock 139816958106352 acquired on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12 09:47:02,185 - filelock - DEBUG - Attempting to acquire lock 139816958106544 on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12 09:47:02,185 - filelock - DEBUG - Lock 139816958106544 acquired on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12 09:47:02,187 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): publicsuffix.org:443
+2025-08-12 09:47:02,204 - urllib3.connectionpool - DEBUG - https://publicsuffix.org:443 "GET /list/public_suffix_list.dat HTTP/1.1" 200 87836
+2025-08-12 09:47:02,211 - filelock - DEBUG - Attempting to release lock 139816958106544 on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12 09:47:02,211 - filelock - DEBUG - Lock 139816958106544 released on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12 09:47:02,225 - filelock - DEBUG - Attempting to release lock 139816958106352 on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12 09:47:02,225 - filelock - DEBUG - Lock 139816958106352 released on /home/runner/workspace/.cache/python-tldextract/3.12.11.final__vnvdzw4182wb2ifzi0cczhv80yfnpx1q-python3-3.12.11__381681__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12 09:47:10,579 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): i.ytimg.com:443
+2025-08-12 09:47:10,670 - urllib3.connectionpool - DEBUG - https://i.ytimg.com:443 "GET /vi_webp/TXq-FYU5iSs/maxresdefault.webp HTTP/1.1" 200 154326
+2025-08-12 09:47:10,848 - PIL.Image - DEBUG - Importing AvifImagePlugin
+2025-08-12 09:47:10,849 - PIL.Image - DEBUG - Importing BlpImagePlugin
+2025-08-12 09:47:10,850 - PIL.Image - DEBUG - Importing BmpImagePlugin
+2025-08-12 09:47:10,850 - PIL.Image - DEBUG - Importing BufrStubImagePlugin
+2025-08-12 09:47:10,851 - PIL.Image - DEBUG - Importing CurImagePlugin
+2025-08-12 09:47:10,851 - PIL.Image - DEBUG - Importing DcxImagePlugin
+2025-08-12 09:47:10,852 - PIL.Image - DEBUG - Importing DdsImagePlugin
+2025-08-12 09:47:10,866 - PIL.Image - DEBUG - Importing EpsImagePlugin
+2025-08-12 09:47:10,867 - PIL.Image - DEBUG - Importing FitsImagePlugin
+2025-08-12 09:47:10,867 - PIL.Image - DEBUG - Importing FliImagePlugin
+2025-08-12 09:47:10,868 - PIL.Image - DEBUG - Importing FpxImagePlugin
+2025-08-12 09:47:10,870 - PIL.Image - DEBUG - Importing FtexImagePlugin
+2025-08-12 09:47:10,870 - PIL.Image - DEBUG - Importing GbrImagePlugin
+2025-08-12 09:47:10,871 - PIL.Image - DEBUG - Importing GifImagePlugin
+2025-08-12 09:47:10,871 - PIL.Image - DEBUG - Importing GribStubImagePlugin
+2025-08-12 09:47:10,871 - PIL.Image - DEBUG - Importing Hdf5StubImagePlugin
+2025-08-12 09:47:10,871 - PIL.Image - DEBUG - Importing IcnsImagePlugin
+2025-08-12 09:47:10,879 - PIL.Image - DEBUG - Importing IcoImagePlugin
+2025-08-12 09:47:10,881 - PIL.Image - DEBUG - Importing ImImagePlugin
+2025-08-12 09:47:10,882 - PIL.Image - DEBUG - Importing ImtImagePlugin
+2025-08-12 09:47:10,882 - PIL.Image - DEBUG - Importing IptcImagePlugin
+2025-08-12 09:47:10,884 - PIL.Image - DEBUG - Importing JpegImagePlugin
+2025-08-12 09:47:10,884 - PIL.Image - DEBUG - Importing Jpeg2KImagePlugin
+2025-08-12 09:47:10,884 - PIL.Image - DEBUG - Importing McIdasImagePlugin
+2025-08-12 09:47:10,884 - PIL.Image - DEBUG - Importing MicImagePlugin
+2025-08-12 09:47:10,898 - PIL.Image - DEBUG - Importing MpegImagePlugin
+2025-08-12 09:47:10,900 - PIL.Image - DEBUG - Importing MpoImagePlugin
+2025-08-12 09:47:10,900 - PIL.Image - DEBUG - Importing MspImagePlugin
+2025-08-12 09:47:10,900 - PIL.Image - DEBUG - Importing PalmImagePlugin
+2025-08-12 09:47:10,901 - PIL.Image - DEBUG - Importing PcdImagePlugin
+2025-08-12 09:47:10,902 - PIL.Image - DEBUG - Importing PcxImagePlugin
+2025-08-12 09:47:10,902 - PIL.Image - DEBUG - Importing PdfImagePlugin
+2025-08-12 09:47:10,910 - PIL.Image - DEBUG - Importing PixarImagePlugin
+2025-08-12 09:47:10,911 - PIL.Image - DEBUG - Importing PngImagePlugin
+2025-08-12 09:47:10,911 - PIL.Image - DEBUG - Importing PpmImagePlugin
+2025-08-12 09:47:10,911 - PIL.Image - DEBUG - Importing PsdImagePlugin
+2025-08-12 09:47:10,911 - PIL.Image - DEBUG - Importing QoiImagePlugin
+2025-08-12 09:47:10,912 - PIL.Image - DEBUG - Importing SgiImagePlugin
+2025-08-12 09:47:10,912 - PIL.Image - DEBUG - Importing SpiderImagePlugin
+2025-08-12 09:47:10,913 - PIL.Image - DEBUG - Importing SunImagePlugin
+2025-08-12 09:47:10,913 - PIL.Image - DEBUG - Importing TgaImagePlugin
+2025-08-12 09:47:10,914 - PIL.Image - DEBUG - Importing TiffImagePlugin
+2025-08-12 09:47:10,914 - PIL.Image - DEBUG - Importing WebPImagePlugin
+2025-08-12 09:47:10,915 - PIL.Image - DEBUG - Importing WmfImagePlugin
+2025-08-12 09:47:10,916 - PIL.Image - DEBUG - Importing XbmImagePlugin
+2025-08-12 09:47:10,917 - PIL.Image - DEBUG - Importing XpmImagePlugin
+2025-08-12 09:47:10,917 - PIL.Image - DEBUG - Importing XVThumbImagePlugin
+2025-08-12 09:47:15,218 - plugins.youtube_dl_button - INFO - ['yt-dlp', '-c', '--max-filesize', '2097152000', '--embed-subs', '-f', '160+bestaudio', '--hls-prefer-ffmpeg', '--merge-output-format', 'webm', 'https://youtu.be/TXq-FYU5iSs?si=tgWHkYr2vhspeSij', '-o', './DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_160.mp4', '--no-warnings']
+2025-08-12 09:47:44,412 - plugins.youtube_dl_button - INFO - 
+2025-08-12 09:47:44,412 - plugins.youtube_dl_button - INFO - [youtube] Extracting URL: https://youtu.be/TXq-FYU5iSs?si=tgWHkYr2vhspeSij
+[youtube] TXq-FYU5iSs: Downloading webpage
+[youtube] TXq-FYU5iSs: Downloading tv client config
+[youtube] TXq-FYU5iSs: Downloading tv player API JSON
+[youtube] TXq-FYU5iSs: Downloading ios player API JSON
+[youtube] TXq-FYU5iSs: Downloading m3u8 information
+[info] TXq-FYU5iSs: Downloading 1 format(s): 160+251
+[info] There are no subtitles for the requested languages
+[download] Destination: ./DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_160.mp4.f160.mp4
+[download] 100% of   65.25MiB in 00:00:21 at 2.97MiB/s     
+[download] Destination: ./DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_160.mp4.f251.webm
+[download] 100% of   77.93MiB in 00:00:01 at 59.49MiB/s    
+[EmbedSubtitle] There aren't any subtitles to embed
+2025-08-12 09:47:44,413 - pyrogram.dispatcher - ERROR - No downloaded file found for ./DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_160
+Traceback (most recent call last):
+  File "/home/runner/workspace/plugins/youtube_dl_button.py", line 187, in youtube_dl_call_back
+    file_size = os.stat(download_directory).st_size
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_160.mp4'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/runner/workspace/.pythonlibs/lib/python3.12/site-packages/pyrogram/dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/home/runner/workspace/plugins/cb_buttons.py", line 124, in button
+    await youtube_dl_call_back(bot, update)
+  File "/home/runner/workspace/plugins/youtube_dl_button.py", line 248, in youtube_dl_call_back
+    raise FileNotFoundError(f"No downloaded file found for {base_name}")
+FileNotFoundError: No downloaded file found for ./DOWNLOADS/6415368038/ಕಿಂಗ್ ಬೊಆ KING BOA - Kannada Dubbed Hollywood Movie | Kannada Dubbed Action Adventure Full Movie_160
