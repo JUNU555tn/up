@@ -68,7 +68,9 @@ async def progress_for_pyrogram(
 
 
 def humanbytes(size):
-    # https://stackoverflow.com/a/49361727/4723940
+    """
+    https://stackoverflow.com/a/49361727/4723940
+    """
     # 2**10 = 1024
     if not size:
         return ""
@@ -79,6 +81,27 @@ def humanbytes(size):
         size /= power
         n += 1
     return str(round(size, 2)) + " " + Dic_powerN[n] + 'B'
+
+def detect_video_quality_from_size(file_size):
+    """Estimate video quality based on file size"""
+    if not file_size:
+        return "Unknown Quality"
+
+    size_gb = file_size / (1024**3)  # Convert to GB
+    size_mb = file_size / (1024**2)  # Convert to MB
+
+    if size_gb >= 2.5:
+        return "4K Quality"
+    elif size_gb >= 1.5:
+        return "1080p Quality"
+    elif size_mb >= 600:
+        return "720p Quality"
+    elif size_mb >= 300:
+        return "480p Quality"
+    elif size_mb >= 150:
+        return "360p Quality"
+    else:
+        return "Low Quality"
 
 
 def TimeFormatter(milliseconds: int) -> str:

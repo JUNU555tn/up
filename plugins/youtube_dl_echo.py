@@ -230,51 +230,71 @@ async def echo(bot: Client, update: Message):
                     if format_string is None:
                         format_string = formats.get("format")
                     format_ext = formats.get("ext")
-                    approx_file_size = ""
-                    if "filesize" in formats:
-                        approx_file_size = humanbytes(formats["filesize"])
-                    cb_string_video = "{}|{}|{}".format(
-                        "video", format_id, format_ext)
-                    cb_string_file = "{}|{}|{}".format(
-                        "file", format_id, format_ext)
-                    if format_string is not None and not "audio only" in format_string:
-                        ikeyboard = [
-                            InlineKeyboardButton(
-                                "📹 " + format_string + " video " + approx_file_size + " ",
-                                callback_data=(cb_string_video).encode("UTF-8")
-                            ),
-                            InlineKeyboardButton(
-                                "📄 " + format_ext + " file " + approx_file_size + " ",
-                                callback_data=(cb_string_file).encode("UTF-8")
-                            )
-                        ]
-                        """if duration is not None:
-                            cb_string_video_message = "{}|{}|{}".format(
-                                "vm", format_id, format_ext)
-                            ikeyboard.append(
-                                InlineKeyboardButton(
-                                    "VM",
-                                    callback_data=(
-                                        cb_string_video_message).encode("UTF-8")
-                                )
-                            )"""
+
+                    # Skip audio-only formats and non-video formats
+                    if "audio only" in format_string or formats.get("vcodec") == "none":
+                        continue
+
+                    # Get quality info
+                    height = formats.get("height", 0)
+                    width = formats.get("width", 0)
+                    fps = formats.get("fps", 0)
+
+                    # Determine quality label
+                    quality_label = ""
+                    if height >= 2160:
+                        quality_label = "4K"
+                    elif height >= 1440:
+                        quality_label = "1440p"
+                    elif height >= 1080:
+                        quality_label = "1080p"
+                    elif height >= 720:
+                        quality_label = "720p"
+                    elif height >= 480:
+                        quality_label = "480p"
+                    elif height >= 360:
+                        quality_label = "360p"
+                    elif height >= 240:
+                        quality_label = "240p"
                     else:
-                        # special weird case :\
-                        ikeyboard = [
-                            InlineKeyboardButton(
-                                "SVideo [" +
-                                "] ( " +
-                                approx_file_size + " )",
-                                callback_data=(cb_string_video).encode("UTF-8")
-                            ),
-                            InlineKeyboardButton(
-                                "DFile [" +
-                                "] ( " +
-                                approx_file_size + " )",
-                                callback_data=(cb_string_file).encode("UTF-8")
-                            )
-                        ]
+                        quality_label = f"{height}p" if height > 0 else "Unknown"
+
+                    # Get file size
+                    if "filesize" in formats and formats["filesize"] is not None:
+                        approx_file_size = humanbytes(int(formats["filesize"]))
+                    elif "filesize_approx" in formats and formats["filesize_approx"] is not None:
+                        approx_file_size = f"~{humanbytes(int(formats['filesize_approx']))}"
+                    else:
+                        # Estimate size based on quality for YouTube videos
+                        if height >= 2160:
+                            approx_file_size = "~2.5GB"
+                        elif height >= 1080:
+                            approx_file_size = "~2GB"
+                        elif height >= 720:
+                            approx_file_size = "~800MB"
+                        elif height >= 480:
+                            approx_file_size = "~400MB"
+                        elif height >= 360:
+                            approx_file_size = "~200MB"
+                        else:
+                            approx_file_size = "~100MB"
+
+                    cb_string_video = "{}|{}|{}".format("video", format_id, format_ext)
+
+                    # Create button text with quality and size
+                    button_text = f"📹 {quality_label} / {approx_file_size}"
+                    if fps and fps > 30:
+                        button_text += f" ({int(fps)}fps)"
+
+                    ikeyboard = [
+                        InlineKeyboardButton(
+                            button_text,
+                            callback_data=(cb_string_video).encode("UTF-8")
+                        )
+                    ]
+
                     inline_keyboard.append(ikeyboard)
+
                 if duration is not None:
                     cb_string_64 = "{}|{}|{}".format("audio", "64k", "mp3")
                     cb_string_128 = "{}|{}|{}".format("audio", "128k", "mp3")

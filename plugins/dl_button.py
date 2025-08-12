@@ -39,8 +39,17 @@ from PIL import Image
 async def ddl_call_back(bot, update):
     logger.info(update)
     cb_data = update.data
-    # youtube_dl extractors
-    tg_send_type, youtube_dl_format, youtube_dl_ext = cb_data.split("=")
+    # Only handle video format
+    if "=" in cb_data:
+        tg_send_type, youtube_dl_format, youtube_dl_ext = cb_data.split("=")
+    else:
+        tg_send_type = "video"
+        youtube_dl_format = "best"
+        youtube_dl_ext = "mp4"
+    
+    # Force video format
+    tg_send_type = "video"
+    
     thumb_image_path = Config.DOWNLOAD_LOCATION + \
         "/" + str(update.from_user.id) + ".jpg"
     youtube_dl_url = update.message.reply_to_message.text

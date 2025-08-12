@@ -6,7 +6,7 @@ Just send me urls. You can send HTTP/HTTPS direct links. I will check and start 
 
 【 use cmd /help for more details! 】"""
 
-    FORMAT_SELECTION = "Select the desired format: <a href='{}'>file size might be approximate</a> \nIf you want to set custom thumbnail, send photo before or quickly after tapping on any of the below buttons.\nYou can use /deletethumbnail to delete the auto-generated thumbnail."
+    FORMAT_SELECTION = "📹 **Video Quality Selection**\n\nChoose your preferred video quality and size: <a href='{}'>file size might be approximate</a>\n\n💡 **Tips:**\n• Send a photo for custom thumbnail before selecting quality\n• Use /deletethumbnail to remove auto-generated thumbnail\n• All downloads will be in video format"
     SET_CUSTOM_USERNAME_PASSWORD = """If you want to download premium videos, provide in the following format:
 URL | filename | username | password"""
     DOWNLOAD_START = "Download started in **Lazy mode...**"
