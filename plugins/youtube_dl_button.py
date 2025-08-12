@@ -169,6 +169,63 @@ async def youtube_dl_call_back(bot, update):
     t_response = stdout.decode().strip()
     logger.info(e_response)
     logger.info(t_response)
+    
+    # Check for geo-restriction error and retry with proxy
+    if e_response and ("not made this video available in your country" in e_response or 
+                       "not available in your country" in e_response or
+                       "blocked in your country" in e_response):
+        
+        await bot.edit_message_text(
+            text="Video is geo-restricted. Trying with proxy...",
+            chat_id=update.message.chat.id,
+            message_id=update.message.id
+        )
+        
+        # Try with each proxy in the list
+        for proxy in Config.AUTO_PROXY_LIST:
+            try:
+                logger.info(f"Trying proxy: {proxy}")
+                proxy_command = command_to_exec.copy()
+                
+                # Remove existing proxy if any
+                if "--proxy" in proxy_command:
+                    proxy_index = proxy_command.index("--proxy")
+                    proxy_command.pop(proxy_index)  # Remove --proxy
+                    proxy_command.pop(proxy_index)  # Remove proxy value
+                
+                # Add new proxy
+                proxy_command.extend(["--proxy", proxy])
+                
+                # Retry download with proxy
+                proxy_process = await asyncio.create_subprocess_exec(
+                    *proxy_command,
+                    stdout=asyncio.subprocess.PIPE,
+                    stderr=asyncio.subprocess.PIPE,
+                )
+                
+                proxy_stdout, proxy_stderr = await proxy_process.communicate()
+                proxy_e_response = proxy_stderr.decode().strip()
+                proxy_t_response = proxy_stdout.decode().strip()
+                
+                # If successful, use proxy results
+                if proxy_t_response and not ("not made this video available in your country" in proxy_e_response):
+                    logger.info(f"Success with proxy: {proxy}")
+                    e_response = proxy_e_response
+                    t_response = proxy_t_response
+                    break
+                    
+            except Exception as proxy_error:
+                logger.error(f"Proxy {proxy} failed: {proxy_error}")
+                continue
+        
+        if not t_response:
+            await bot.edit_message_text(
+                chat_id=update.message.chat.id,
+                message_id=update.message.id,
+                text="❌ Video is geo-restricted and all proxy attempts failed. Try using a VPN or different link."
+            )
+            return False
+    
     ad_string_to_replace = "please report this issue on https://yt-dl.org/bug . Make sure you are using the latest version; see  https://yt-dl.org/update  on how to update. Be sure to call youtube-dl with the --verbose flag and include its complete output."
     if e_response and ad_string_to_replace in e_response:
         error_message = e_response.replace(ad_string_to_replace, "")

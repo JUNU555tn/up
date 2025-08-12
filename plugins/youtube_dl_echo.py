@@ -194,6 +194,49 @@ async def echo(bot: Client, update: Message):
         # logger.info(e_response)
         t_response = stdout.decode().strip()
         # logger.info(t_response)
+        
+        # Check for geo-restriction and retry with proxy
+        if e_response and ("not made this video available in your country" in e_response or 
+                           "not available in your country" in e_response or
+                           "blocked in your country" in e_response):
+            
+            # Try with each proxy in the list
+            for proxy in Config.AUTO_PROXY_LIST:
+                try:
+                    logger.info(f"Trying proxy for info extraction: {proxy}")
+                    proxy_command = command_to_exec.copy()
+                    
+                    # Remove existing proxy if any
+                    if "--proxy" in proxy_command:
+                        proxy_index = proxy_command.index("--proxy")
+                        proxy_command.pop(proxy_index)
+                        proxy_command.pop(proxy_index)
+                    
+                    # Add new proxy
+                    proxy_command.extend(["--proxy", proxy])
+                    
+                    # Retry info extraction with proxy
+                    proxy_process = await asyncio.create_subprocess_exec(
+                        *proxy_command,
+                        stdout=asyncio.subprocess.PIPE,
+                        stderr=asyncio.subprocess.PIPE,
+                    )
+                    
+                    proxy_stdout, proxy_stderr = await proxy_process.communicate()
+                    proxy_e_response = proxy_stderr.decode().strip()
+                    proxy_t_response = proxy_stdout.decode().strip()
+                    
+                    # If successful, use proxy results
+                    if proxy_t_response and not ("not made this video available in your country" in proxy_e_response):
+                        logger.info(f"Success with proxy: {proxy}")
+                        e_response = proxy_e_response
+                        t_response = proxy_t_response
+                        break
+                        
+                except Exception as proxy_error:
+                    logger.error(f"Proxy {proxy} failed: {proxy_error}")
+                    continue
+        
         # https://github.com/rg3/youtube-dl/issues/2630#issuecomment-38635239
         if e_response and "nonnumeric port" not in e_response:
             # logger.warn("Status : FAIL", exc.returncode, exc.output)
