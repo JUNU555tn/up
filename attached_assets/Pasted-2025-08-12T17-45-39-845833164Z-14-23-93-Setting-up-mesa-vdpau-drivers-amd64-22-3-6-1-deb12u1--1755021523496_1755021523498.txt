@@ -1,0 +1,101 @@
+2025-08-12T17:45:39.845833164Z #14 23.93 Setting up mesa-vdpau-drivers:amd64 (22.3.6-1+deb12u1) ...
+2025-08-12T17:45:39.95722659Z #14 23.93 Setting up libglx-mesa0:amd64 (22.3.6-1+deb12u1) ...
+2025-08-12T17:45:39.957245431Z #14 23.94 Setting up libavformat59:amd64 (7:5.1.6-0+deb12u1) ...
+2025-08-12T17:45:39.957249931Z #14 23.95 Setting up libglx0:amd64 (1.6.0-1) ...
+2025-08-12T17:45:39.957263901Z #14 23.97 Setting up libsphinxbase3:amd64 (0.8+5prealpha+1-16) ...
+2025-08-12T17:45:39.957266951Z #14 23.98 Setting up libpocketsphinx3:amd64 (0.8+5prealpha+1-15) ...
+2025-08-12T17:45:39.957269921Z #14 24.00 Setting up libgl1:amd64 (1.6.0-1) ...
+2025-08-12T17:45:39.957272831Z #14 24.02 Setting up va-driver-all:amd64 (2.17.0-1) ...
+2025-08-12T17:45:39.957275631Z #14 24.04 Setting up libvdpau-va-gl1:amd64 (0.4.2-1+b1) ...
+2025-08-12T17:45:40.107916976Z #14 24.06 Setting up libavfilter8:amd64 (7:5.1.6-0+deb12u1) ...
+2025-08-12T17:45:40.107933686Z #14 24.07 Setting up libavdevice59:amd64 (7:5.1.6-0+deb12u1) ...
+2025-08-12T17:45:40.107936626Z #14 24.09 Setting up vdpau-driver-all:amd64 (1.5-2) ...
+2025-08-12T17:45:40.107938826Z #14 24.11 Setting up ffmpeg (7:5.1.6-0+deb12u1) ...
+2025-08-12T17:45:40.107941047Z #14 24.13 Processing triggers for libc-bin (2.36-9+deb12u10) ...
+2025-08-12T17:45:41.310532443Z #14 DONE 25.3s
+2025-08-12T17:45:41.310551723Z 
+2025-08-12T17:45:41.310582064Z #15 exporting to docker image format
+2025-08-12T17:45:41.310591255Z #15 exporting layers
+2025-08-12T17:45:59.460890477Z #15 exporting layers 18.2s done
+2025-08-12T17:45:59.460908017Z #15 exporting manifest sha256:af6c6e6dc2788d23dcf0c65b58320860370c2457de3062ed8c5bd7a1118a159c done
+2025-08-12T17:45:59.460912497Z #15 exporting config sha256:42f14102fedd4178b6a0b100bd49597ccdc16fad7b1669dd1ed433f0d775d8fc
+2025-08-12T17:45:59.6115056Z #15 exporting config sha256:42f14102fedd4178b6a0b100bd49597ccdc16fad7b1669dd1ed433f0d775d8fc done
+2025-08-12T17:46:07.09191128Z #15 DONE 25.8s
+2025-08-12T17:46:07.09193657Z 
+2025-08-12T17:46:07.091941361Z #16 exporting cache to client directory
+2025-08-12T17:46:07.09194511Z #16 preparing build cache for export
+2025-08-12T17:46:10.550721395Z #16 writing cache manifest sha256:2f5e174445a6c9b09f525951bf419e617d0a680cd93e1c6bedd4ec02ab3df81f done
+2025-08-12T17:46:10.550737016Z #16 DONE 3.4s
+2025-08-12T17:46:15.688028875Z Pushing image to registry...
+2025-08-12T17:46:29.081203341Z Upload succeeded
+2025-08-12T17:46:32.700852697Z ==> Deploying...
+2025-08-12T17:46:52.633960446Z 2025-08-12 17:46:52,633 - pyrogram.crypto.aes - INFO - Using TgCrypto
+2025-08-12T17:46:53.306450272Z 2025-08-12 17:46:53,306 - asyncio - DEBUG - Using selector: EpollSelector
+2025-08-12T17:46:54.319456815Z 2025-08-12 17:46:54,319 - __main__ - INFO - Starting bot application...
+2025-08-12T17:46:54.324128341Z  * Serving Flask app 'web_server'
+2025-08-12T17:46:54.337523627Z  * Debug mode: off
+2025-08-12T17:46:54.404674501Z 2025-08-12 17:46:54,404 - werkzeug - INFO - WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+2025-08-12T17:46:54.404697751Z  * Running on all addresses (0.0.0.0)
+2025-08-12T17:46:54.404701261Z  * Running on http://127.0.0.1:10000
+2025-08-12T17:46:54.404704132Z  * Running on http://10.214.207.25:10000
+2025-08-12T17:46:54.404707452Z 2025-08-12 17:46:54,404 - werkzeug - INFO - Press CTRL+C to quit
+2025-08-12T17:46:55.334366681Z 2025-08-12 17:46:55,334 - werkzeug - INFO - 127.0.0.1 - - [12/Aug/2025 17:46:55] "HEAD / HTTP/1.1" 200 -
+2025-08-12T17:47:03.462829272Z ==> Your service is live 🎉
+2025-08-12T17:47:03.495920278Z ==> 
+2025-08-12T17:47:03.524913125Z ==> ///////////////////////////////////////////////////////////
+2025-08-12T17:47:03.554712331Z ==> 
+2025-08-12T17:47:03.591873387Z ==> Available at your primary URL https://up-wy5c.onrender.com
+2025-08-12T17:47:03.623487523Z ==> 
+2025-08-12T17:47:03.669936418Z ==> ///////////////////////////////////////////////////////////
+2025-08-12T17:47:04.703135347Z 2025-08-12 17:47:04,702 - werkzeug - INFO - 127.0.0.1 - - [12/Aug/2025 17:47:04] "GET / HTTP/1.1" 200 -
+2025-08-12T17:48:14.13135212Z 2025-08-12 17:48:14,130 - plugins.youtube_dl_echo - INFO - {
+2025-08-12T17:48:14.13137754Z     "_": "User",
+2025-08-12T17:48:14.13138293Z     "id": 6415368038,
+2025-08-12T17:48:14.13138683Z     "is_self": false,
+2025-08-12T17:48:14.131390661Z     "is_contact": false,
+2025-08-12T17:48:14.131394981Z     "is_mutual_contact": false,
+2025-08-12T17:48:14.131398831Z     "is_deleted": false,
+2025-08-12T17:48:14.131402541Z     "is_bot": false,
+2025-08-12T17:48:14.131406561Z     "is_verified": false,
+2025-08-12T17:48:14.131410481Z     "is_restricted": false,
+2025-08-12T17:48:14.131414671Z     "is_scam": false,
+2025-08-12T17:48:14.131426691Z     "is_fake": false,
+2025-08-12T17:48:14.131430731Z     "is_support": false,
+2025-08-12T17:48:14.131434691Z     "is_premium": false,
+2025-08-12T17:48:14.131438551Z     "first_name": "Jack",
+2025-08-12T17:48:14.131442262Z     "last_name": "Sparrow 🔥",
+2025-08-12T17:48:14.131446952Z     "status": "UserStatus.RECENTLY",
+2025-08-12T17:48:14.131450952Z     "username": "Pawsismyson",
+2025-08-12T17:48:14.131455012Z     "language_code": "en"
+2025-08-12T17:48:14.131459122Z }
+2025-08-12T17:48:14.140264503Z 2025-08-12 17:48:14,140 - filelock - DEBUG - Attempting to acquire lock 134029222772304 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T17:48:14.14055153Z 2025-08-12 17:48:14,140 - filelock - DEBUG - Lock 134029222772304 acquired on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T17:48:14.141054411Z 2025-08-12 17:48:14,140 - filelock - DEBUG - Attempting to acquire lock 134028665427344 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T17:48:14.141606524Z 2025-08-12 17:48:14,141 - filelock - DEBUG - Lock 134028665427344 acquired on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T17:48:14.142732679Z 2025-08-12 17:48:14,142 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): publicsuffix.org:443
+2025-08-12T17:48:14.184106404Z 2025-08-12 17:48:14,183 - urllib3.connectionpool - DEBUG - https://publicsuffix.org:443 "GET /list/public_suffix_list.dat HTTP/1.1" 200 87885
+2025-08-12T17:48:14.20362555Z 2025-08-12 17:48:14,203 - filelock - DEBUG - Attempting to release lock 134028665427344 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T17:48:14.20365188Z 2025-08-12 17:48:14,203 - filelock - DEBUG - Lock 134028665427344 released on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/urls/62bf135d1c2f3d4db4228b9ecaf507a2.tldextract.json.lock
+2025-08-12T17:48:14.212183605Z 2025-08-12 17:48:14,212 - filelock - DEBUG - Attempting to release lock 134029222772304 on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T17:48:14.212208246Z 2025-08-12 17:48:14,212 - filelock - DEBUG - Lock 134029222772304 released on /root/.cache/python-tldextract/3.11.13.final__local__ecb11d__tldextract-5.3.0/publicsuffix.org-tlds/de84b5ca2167d4c83e38fb162f2e8738.tldextract.json.lock
+2025-08-12T17:48:22.614356652Z 2025-08-12 17:48:22,614 - plugins.youtube_dl_echo - INFO - Geo-restriction detected. Starting comprehensive bypass...
+2025-08-12T17:48:22.614943296Z 2025-08-12 17:48:22,614 - plugins.youtube_dl_echo - INFO - Trying geo-bypass with country: US
+2025-08-12T17:48:30.103361929Z 2025-08-12 17:48:30,103 - plugins.youtube_dl_echo - INFO - Trying geo-bypass with country: GB
+2025-08-12T17:48:37.108081506Z 2025-08-12 17:48:37,107 - plugins.youtube_dl_echo - INFO - Trying geo-bypass with country: CA
+2025-08-12T17:48:44.912151317Z 2025-08-12 17:48:44,911 - plugins.youtube_dl_echo - INFO - Trying geo-bypass with country: AU
+2025-08-12T17:48:52.414093447Z 2025-08-12 17:48:52,413 - plugins.youtube_dl_echo - INFO - Trying geo-bypass with country: NL
+2025-08-12T17:48:59.804100088Z 2025-08-12 17:48:59,801 - plugins.youtube_dl_echo - INFO - Trying geo-bypass with country: DE
+2025-08-12T17:49:07.51326742Z 2025-08-12 17:49:07,513 - plugins.youtube_dl_echo - INFO - Trying geo-bypass with country: JP
+2025-08-12T17:49:15.010993222Z 2025-08-12 17:49:15,010 - plugins.youtube_dl_echo - INFO - Trying IPv6 bypass method
+2025-08-12T17:49:21.303968742Z 2025-08-12 17:49:21,303 - plugins.youtube_dl_echo - INFO - Geo-bypass methods failed. Trying enhanced proxy servers...
+2025-08-12T17:49:21.303989702Z 2025-08-12 17:49:21,303 - plugins.youtube_dl_echo - INFO - Trying proxy 1/12: http://45.77.55.173:8080
+2025-08-12T17:49:30.606142704Z 2025-08-12 17:49:30,605 - plugins.youtube_dl_echo - INFO - Proxy http://45.77.55.173:8080 failed or still geo-blocked
+2025-08-12T17:49:30.606164535Z 2025-08-12 17:49:30,605 - plugins.youtube_dl_echo - INFO - Trying proxy 2/12: http://103.160.201.76:8080
+2025-08-12T17:49:38.613065756Z 2025-08-12 17:49:38,612 - plugins.youtube_dl_echo - INFO - Proxy http://103.160.201.76:8080 failed or still geo-blocked
+2025-08-12T17:49:38.613197369Z 2025-08-12 17:49:38,613 - plugins.youtube_dl_echo - INFO - Trying proxy 3/12: http://103.149.53.120:59166
+2025-08-12T17:50:03.615330356Z 2025-08-12 17:50:03,615 - plugins.youtube_dl_echo - ERROR - Proxy http://103.149.53.120:59166 timed out
+2025-08-12T17:50:03.615842078Z 2025-08-12 17:50:03,615 - plugins.youtube_dl_echo - INFO - Trying proxy 4/12: http://47.88.87.74:1080
+2025-08-12T17:50:28.618627188Z 2025-08-12 17:50:28,618 - plugins.youtube_dl_echo - ERROR - Proxy http://47.88.87.74:1080 timed out
+2025-08-12T17:50:28.618655508Z 2025-08-12 17:50:28,618 - plugins.youtube_dl_echo - INFO - Trying proxy 5/12: http://134.209.29.120:8080
+2025-08-12T17:50:53.62155355Z 2025-08-12 17:50:53,621 - plugins.youtube_dl_echo - ERROR - Proxy http://134.209.29.120:8080 timed out
+2025-08-12T17:50:53.621595781Z 2025-08-12 17:50:53,621 - plugins.youtube_dl_echo - INFO - Trying proxy 6/12: http://198.50.163.192:3129
