@@ -21,7 +21,7 @@ class Config(object):
     DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "https://telegra.ph/file/1efd13f55ef33d64aa2c8.jpg")
     # proxy for accessing youtube-dl in GeoRestricted Areas
     # Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061
-    HTTP_PROXY = os.environ.get("HTTP_PROXY", "108.141.130.146")
+    HTTP_PROXY = os.environ.get("HTTP_PROXY", "http://108.162.192.185:80")
     
     # Auto proxy list for geo-restricted content - fresh working proxies
     AUTO_PROXY_LIST = [
